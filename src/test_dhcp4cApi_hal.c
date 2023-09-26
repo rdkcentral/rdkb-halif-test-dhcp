@@ -1113,18 +1113,14 @@ void test_l1_dhcp4cApi_negative1_dhcp4c_get_ecm_lease_time(void)
 {
     unsigned int *pValue = NULL;
     // Log entering test function
-    UT_LOG("Entering test_l1_dhcp4cApi_negative1_dhcp4c_get_ecm_lease_time...");
-    
+    UT_LOG("Entering test_l1_dhcp4cApi_negative1_dhcp4c_get_ecm_lease_time...");  
     // Invoke the API
-  /*  int status = dhcp4c_get_ecm_lease_time(pValue);
-    
+    int status = dhcp4c_get_ecm_lease_time(pValue);
     // Log the test description and expected output
     UT_LOG("Invoking dhcp4c_get_ecm_lease_time with NULL pointer (pValue=NULL)");
     UT_LOG("Output: status=%d", status);
-    
     // Check the return value
-    UT_ASSERT_EQUAL(status, STATUS_FAILURE); */
-    
+    UT_ASSERT_EQUAL(status, STATUS_FAILURE);
     // Log exiting test function
     UT_LOG("Exiting test_l1_dhcp4cApi_negative1_dhcp4c_get_ecm_lease_time...");
 }
