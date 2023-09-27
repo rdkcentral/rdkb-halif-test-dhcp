@@ -945,7 +945,7 @@ void test_l1_dhcp4cApi_negative_1_get_ert_dhcp_svr(void)
  * **Test Procedure:**
  * | Variation / Step | Description                                      | Test Data                     | Expected Result                                   | Notes            |
  * | :--------------: | ------------------------------------------------ | ----------------------------- | ------------------------------------------------- | ---------------- |
- * | 01 | Retrieve ECM lease time with valid memory address | pValue = valid memory address, range is 60 to 604800  | STATUS_SUCCESS | Should be successful |
+ * | 01 | Invoking dhcp4c_get_ecm_lease_time with valid memory address | pValue = valid memory address, range is 60 to 604800  | STATUS_SUCCESS | Should be successful |
  */
 void test_l1_dhcp4cApi_positive1_dhcp4c_get_ecm_lease_time(void)
 {
