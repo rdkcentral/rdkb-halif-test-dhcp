@@ -1935,7 +1935,7 @@ void test_l1_dhcp4cApi_negative_1_get_emta_remain_renew_time(void) {
 * **Test Procedure:**
 * | Variation / Step | Description | Test Data | Expected Result | Notes |
 * | :----: | --------- | ---------- |-------------- | ----- |
-* | 01 | Invoking dhcp4c_get_emta_remain_rebind_time | value = valid buffer | STATUS_SUCCESS | Should be successful |
+* | 01 | Invoking dhcp4c_get_emta_remain_rebind_time with valid address | value = valid buffer | STATUS_SUCCESS | Should be successful |
 */
 void test_l1_dhcp4cApi_positive1_dhcp4c_get_emta_remain_rebind_time(void) {
     UT_LOG("Entering test_l1_dhcp4cApi_positive1_dhcp4c_get_emta_remain_rebind_time...");
