@@ -91,7 +91,7 @@ int isIpAddressInRange(const char* ip_address, const char* start_range, const ch
  * |       01         |Invoking dhcpv4c_get_ert_lease_time with valid memory location| *pValue = valid pointer | STATUS_SUCCESS | Should be successful |
  */
 void test_l1_dhcpv4c_api_positive1_GetValidLeaseTime(void) {
-    UINT value;    	
+    UINT value = 0;    	
     UT_LOG("Entering test_l1_dhcpv4c_api_positive1_GetValidLeaseTime...");
     
     UT_LOG("Invoking dhcpv4c_get_ert_lease_time...");
@@ -168,7 +168,7 @@ void test_l1_dhcpv4c_api_negative1_InvalidPointer(void) {
  */
 void test_l1_dhcpv4c_positive_1_get_ert_remain_lease_time(void)
 {
-    UINT leaseTime;
+    UINT leaseTime = 0;
     UT_LOG("Entering test_l1_dhcpv4c_positive_1_get_ert_remain_lease_time...");
   
     UT_LOG("Invoking dhcpv4c_get_ert_remain_lease_time with a valid pointer");
@@ -240,7 +240,7 @@ void test_l1_dhcpv4c_negative_1_get_ert_remain_lease_time(void)
 
 void test_l1_dhcpv4c_get_ert_remain_renew_time_positive_1_valid_memory_address_passed(void)
 {
-    UINT value;
+    UINT value = 0;
     UT_LOG("Entering test_l1_dhcpv4c_get_ert_remain_renew_time_positive_1_valid_memory_address_passed...");
     
     UT_LOG("Invoking dhcpv4c_get_ert_remain_renew_time with valid memory address for pValue.");
@@ -310,7 +310,7 @@ void test_l1_dhcpv4c_get_ert_remain_renew_time_negative_1_null_pointer_passed(vo
 */
 
 void test_l1_dhcpv4c_api_positive1_get_ert_remain_rebind_time(void) {
-    UINT timeValue;
+    UINT timeValue = 0;
     UT_LOG("Entering test_l1_dhcpv4c_api_positive1_get_ert_remain_rebind_time...");
 
     UT_LOG("Invoking dhcpv4c_get_ert_remain_rebind_time with valid pValue pointer.");
@@ -386,7 +386,7 @@ void test_l1_dhcpv4c_api_negative1_get_ert_remain_rebind_time(void) {
 */
 void test_l1_dhcpv4c_api_positive1_dhcpv4c_get_ert_config_attempts_validPointer_successfulCall(void) {
     INT someInteger = 0;
-    INT status;
+    INT status = 0;
 
     UT_LOG("Entering test_l1_dhcpv4c_api_positive1_dhcpv4c_get_ert_config_attempts_validPointer_successfulCall...");
     UT_LOG("Invoking dhcpv4c_get_ert_config_attempts with pValue = &someInteger");
@@ -515,7 +515,7 @@ void test_l1_dhcpv4c_api_negative1_dhcpv4c_get_ert_ifname(void) {
 * | 01 | Invoking dhcpv4c_get_ert_fsm_state with valid pointer | Invoke dhcp4c_get_ert_ifname with pValue as NULL | STATUS_SUCCESS | Should return STATUS_SUCCESS |
 */
 void test_l1_dhcpv4c_api_positive_1_dhcpv4c_get_ert_fsm_state(void) {
-    INT value;
+    INT value = 0;
     UT_LOG("Entering test_l1_dhcpv4c_api_positive_1_dhcpv4c_get_ert_fsm_state...");
 
     // Allocate memory location
@@ -590,8 +590,8 @@ void test_l1_dhcpv4c_api_negative_3_dhcpv4c_get_ert_fsm_state(void) {
 */
  
 void test_l1_dhcpv4c_positive_1_dhcpv4c_get_ert_ip_addr(void) {
-    char ip_str[20];
-    UINT ipAddr;
+    char ip_str[20] = {0};
+    UINT ipAddr = 0;
     UT_LOG("Entering test_l1_dhcpv4c_positive_1_dhcpv4c_get_ert_ip_addr...");
 
     /* Test with a valid memory location as the pValue argument */
@@ -672,7 +672,7 @@ void test_l1_dhcpv4c_negative_1_dhcpv4c_get_ert_ip_addr(void) {
 * | 01  | Invoke dhcpv4c_get_ert_mask API with valid pValue | pValue = valid buffer | STATUS_SUCCESS | Should be successful |
 */
 void test_l1_dhcpv4c_api_positive_1_get_ert_mask(void) {
-    UINT value;
+    UINT value = 0;
     unsigned char octet1 = 0;
     unsigned char octet2 = 0;
     unsigned char octet3 = 0;
@@ -755,8 +755,8 @@ void test_l1_dhcpv4c_api_negative_1_get_ert_mask(void) {
 */
 
 void test_l1_dhcpv4c_api_positive1_dhcpv4c_get_ert_gw(void) {
-    UINT value;
-    char ip_str[20];
+    UINT value = 0;
+    char ip_str[20] = {0};
     UT_LOG("Entering test_l1_dhcpv4c_api_positive1_dhcpv4c_get_ert_gw...");
     // Provide a valid memory location for pValue
     UT_LOG("Invoking dhcpv4c_get_ert_gw with valid memory location for pValue");
@@ -833,8 +833,8 @@ void test_l1_dhcpv4c_api_negative1_dhcpv4c_get_ert_gw(void) {
     */
 void test_l1_dhcpv4c_api_positive1_dhcpv4c_get_ert_dns_svrs(void)
 {
-    char ip_str[20];
-    int dns_svrs;
+    char ip_str[20] = {0};
+    int dns_svrs = 0;
     dhcpv4c_ip_list_t ip_list;
     UT_LOG("Entering test_l1_dhcpv4c_api_positive1_dhcpv4c_get_ert_dns_svrs...");
 
@@ -929,8 +929,8 @@ void test_l1_dhcpv4c_api_negative1_invalid_memory_for_dhcpv4c_ip_list_t(void)
     * | 01 | Invoking dhcpv4c_get_ert_dhcp_svr with valid memory address provided | *pValue = valid memory location | STATUS_SUCCESS | Function call should succeed |
 */
 void test_l1_dhcpv4c_api_positive_1_get_ert_dhcp_svr(void) {
-    char ip_str[20];
-    UINT value;
+    char ip_str[20] = {0};
+    UINT value = 0;
     UT_LOG("Entering test_l1_dhcpv4c_api_positive_1_get_ert_dhcp_svr...");
     UT_LOG("Invoking dhcpv4c_get_ert_dhcp_svr with valid memory address provided");
     INT status = dhcpv4c_get_ert_dhcp_svr(&value);
@@ -1006,7 +1006,7 @@ void test_l1_dhcpv4c_api_negative_1_dhcpv4c_get_ert_dhcp_svr(void) {
  * | 01 | Invoking dhcpv4c_get_ecm_lease_time with valid pValue | *pValue = valid memory location | STATUS_SUCCESS | Should be successful |
  */
 void test_l1_dhcpv4c_api_positive_1_get_ecm_lease_time(void) {
-    UINT value;
+    UINT value = 0;
     UT_LOG("Entering test_l1_dhcpv4c_api_positive_1_get_ecm_lease_time...");
  
     UT_LOG("Invoking dhcpv4c_get_ecm_lease_time with valid pValue");
@@ -1079,7 +1079,7 @@ void test_l1_dhcpv4c_api_negative_1_get_ecm_lease_time(void) {
 * | 01 | Invoking dhcpv4c_get_ecm_remain_lease_time with a valid pointer | *pValue = valid memory location | STATUS_SUCCESS | Should be successful |
 */
 void test_l1_dhcpv4c_positive1_get_ecm_remain_lease_time() {
-    UINT value;
+    UINT value = 0;
     
     UT_LOG("Entering test_l1_dhcpv4c_positive1_get_ecm_remain_lease_time...");
     
@@ -1154,7 +1154,7 @@ void test_l1_dhcpv4c_negative1_get_ecm_remain_lease_time() {
  */
 void test_l1_dhcpv4c_get_ecm_remain_renew_time_positive_1_default_case(void)
 {
-    UINT value;
+    UINT value = 0;
     UT_LOG("Entering test_l1_dhcpv4c_get_ecm_remain_renew_time_positive_1_default_case...");
     UT_LOG("Invoking dhcpv4c_get_ecm_remain_renew_time with a valid memory location");
     INT status = dhcpv4c_get_ecm_remain_renew_time(&value);
@@ -1228,7 +1228,7 @@ void test_l1_dhcpv4c_get_ecm_remain_renew_time_negative_1_null_pointer(void)
 */
 void test_l1_dhcpv4c_api_positive_1_ecm_remain_rebind_time(void)
 {
-    UINT value;
+    UINT value = 0;
     UT_LOG("Entering test_l1_dhcpv4c_api_positive_1_ecm_remain_rebind_time...");
     UT_LOG("Invoking dhcpv4c_get_ecm_remain_rebind_time with valid pValue.");
     INT status = dhcpv4c_get_ecm_remain_rebind_time(&value);
@@ -1303,7 +1303,7 @@ void test_l1_dhcpv4c_api_negative_1_get_ecm_remain_rebind_time(void)
  */
 void test_l1_dhcpv4c_api_positive_1_get_ecm_config_attempts(void)
 {
-    INT value;
+    INT value = 0;
     UT_LOG("Entering test_l1_dhcpv4c_api_positive_1_get_ecm_config_attempts...");
     UT_LOG("Invoking dhcpv4c_get_ecm_config_attempts with valid pointer");
     INT ret = dhcpv4c_get_ecm_config_attempts(&value);
@@ -1376,7 +1376,7 @@ void test_l1_dhcpv4c_api_negative_1_ecm_config_attempts(void)
 
 void test_l1_dhcpv4c_api_positive1_dhcpv4c_get_ecm_ifname(void)
 {
-    CHAR pName[64];
+    CHAR pName[64] = {0};
     UT_LOG("Entering test_l1_dhcpv4c_api_positive1_dhcpv4c_get_ecm_ifname...");
     // Allocate a 64-byte CHAR array
     UT_LOG("Invoking dhcpv4c_get_ecm_ifname with pName as valid memory location. Expected Output: STATUS_SUCCESS");
@@ -1516,8 +1516,8 @@ void test_l1_dhcpv4c_api_negative1_dhcpv4c_get_ecm_fsm_state(void) {
 */
 
 void test_l1_dhcpv4c_positive1_GetEcmIpAddress(void) {
-    char ip_str[20];
-    UINT ipAddr;
+    char ip_str[20] = {0};
+    UINT ipAddr = 0;
     UT_LOG("Entering test_l1_dhcpv4c_positive1_GetEcmIpAddress...");
     UT_LOG("Invoking dhcpv4c_get_ecm_ip_addr with a valid UINT pointer.");	
     INT status = dhcpv4c_get_ecm_ip_addr(&ipAddr);
@@ -1592,8 +1592,8 @@ void test_l1_dhcpv4c_negative1_GetEcmIpAddress(void) {
 */
 void test_l1_dhcpv4c_positive1_get_ecm_mask(void)
 {
-    UINT value;
-    INT status;
+    UINT value = 0;
+    INT status = 0;
     unsigned char octet1 = 0;
     unsigned char octet2 = 0;
     unsigned char octet3 = 0;
@@ -1648,7 +1648,7 @@ void test_l1_dhcpv4c_positive1_get_ecm_mask(void)
 */
 void test_l1_dhcpv4c_negative1_get_ecm_mask(void)
 {
-    INT status;
+    INT status = 0;
 
     /* Log the start of the test */
     UT_LOG("Entering test_l1_dhcpv4c_negative1_get_ecm_mask...");
@@ -1687,9 +1687,9 @@ void test_l1_dhcpv4c_negative1_get_ecm_mask(void)
 
 void test_l1_dhcpv4c_positive1_dhcpv4c_get_ecm_gw_validOutputMemoryAndStatusCheck( void )
 {
-    INT status;
+    INT status = 0;
     UINT output = 0;
-    char ip_str[20];
+    char ip_str[20] = {0};
 	
     UT_LOG("Entering test_l1_dhcpv4c_positive1_dhcpv4c_get_ecm_gw_validOutputMemoryAndStatusCheck...");
 
@@ -1738,7 +1738,7 @@ void test_l1_dhcpv4c_positive1_dhcpv4c_get_ecm_gw_validOutputMemoryAndStatusChec
 */
 void test_l1_dhcpv4c_negative1_dhcpv4c_get_ecm_gw_nullPointerProvidedForOutputMemory( void )
 {
-    INT status;
+    INT status = 0;
 
     UT_LOG("Entering test_l1_dhcpv4c_negative1_dhcpv4c_get_ecm_gw_nullPointerProvidedForOutputMemory...");
     UT_LOG("Invoking dhcpv4c_get_ecm_gw with NULL");
@@ -1770,8 +1770,8 @@ void test_l1_dhcpv4c_negative1_dhcpv4c_get_ecm_gw_nullPointerProvidedForOutputMe
 * | 01 | Invoking dhcpv4c_get_ecm_dns_svrs with a valid memory location | pList = valid pointer to structure dhcpv4c_ip_list_t | STATUS_SUCCESS | The number of IP addresses should be between 1-4 |
 */
 void test_l1_dhcpv4c_api_positive1_get_ecm_dns_svrs(void) {
-    char ip_str[20];
-    int dns_svrs;
+    char ip_str[20] = {0};
+    int dns_svrs = 0;
     dhcpv4c_ip_list_t list;
 	
     UT_LOG("Entering test_l1_dhcpv4c_api_positive1_get_ecm_dns_svrs...");
@@ -1857,8 +1857,8 @@ void test_l1_dhcpv4c_api_negative1_get_ecm_dns_svrs(void) {
     */
 void test_l1_dhcpv4c_api_positive1_get_ecm_dhcp_svr(void)
 {
-    char ip_str[20];
-    UINT ipValue;
+    char ip_str[20] = {0};
+    UINT ipValue = 0;
     UT_LOG("Entering test_l1_dhcpv4c_api_positive1_get_ecm_dhcp_svr...");
     UT_LOG("Invoking dhcpv4c_get_ecm_dhcp_svr with valid pointer");
     INT status = dhcpv4c_get_ecm_dhcp_svr(&ipValue);
@@ -2007,7 +2007,7 @@ void test_l1_dhcpv4c_api_negative1_get_emta_remain_lease_time(void)
  */
 
 void test_l1_dhcpv4c_api_positive1_dhcpv4c_get_emta_remain_renew_time(void) {
-    UINT value;
+    UINT value = 0;
     UT_LOG("Entering test_l1_dhcpv4c_api_positive1_dhcpv4c_get_emta_remain_renew_time...");
     UT_LOG("Invoking dhcpv4c_get_emta_remain_renew_time with valid pValue");
     INT status = dhcpv4c_get_emta_remain_renew_time(&value);
@@ -2079,7 +2079,7 @@ void test_l1_dhcpv4c_api_negative1_dhcpv4c_get_emta_remain_renew_time(void) {
 
 void test_l1_dhcpv4c_api_positive1_get_emta_remain_rebind_time(void)
 {
-    UINT value;
+    UINT value = 0;
     UT_LOG("Entering test_l1_dhcpv4c_api_positive1_get_emta_remain_rebind_time...");
     UT_LOG("Invoking dhcpv4c_get_emta_remain_rebind_time with valid output parameter");
     INT status = dhcpv4c_get_emta_remain_rebind_time(&value);
