@@ -106,25 +106,19 @@ int isIpAddressInRange(const char* ip_address, const char* start_range, const ch
 void test_l1_dhcp4cApi_positive_1_dhcp4c_get_ert_lease_time(void)
 {
     UT_LOG("Entering test_l1_dhcp4cApi_positive_1_dhcp4c_get_ert_lease_time...");
-
-    unsigned int value;
-    int status = dhcp4c_get_ert_lease_time(&value);
-
+    unsigned int value = 0;
     UT_LOG("Invoking dhcp4c_get_ert_lease_time with pValue = valid memory address");
+    int status = dhcp4c_get_ert_lease_time(&value);
     UT_LOG("Function returned status: %d",status);
     UT_LOG("Function returned Value: %u", value);
     UT_ASSERT_EQUAL(status, STATUS_SUCCESS);
-    if(value >= 60 && value <= 604800){
+    if (value >= 60 && value <= 604800) {
         UT_LOG("ert_lease_time is %u which is a valid value.", value);
         UT_PASS("dhcp4c_get_ert_lease_time validation success");
-    }
-	else{
-		UT_LOG("ert_lease_time is %u which is a invalid value.", value);
+    } else {
+	UT_LOG("ert_lease_time is %u which is a invalid value.", value);
         UT_FAIL("dhcp4c_get_ert_lease_time validation failed");	
     }
-
-
-
     UT_LOG("Exiting test_l1_dhcp4cApi_positive_1_dhcp4c_get_ert_lease_time...");
 }
 
@@ -150,14 +144,10 @@ void test_l1_dhcp4cApi_negative_1_dhcp4c_get_ert_lease_time(void)
 {
     UT_LOG("Entering test_l1_dhcp4cApi_negative_1_dhcp4c_get_ert_lease_time...");
     unsigned int *pValue = NULL;
-    int status = dhcp4c_get_ert_lease_time(pValue);
-
     UT_LOG("Invoking dhcp4c_get_ert_lease_time with pValue = NULL");
+    int status = dhcp4c_get_ert_lease_time(pValue);
     UT_LOG("Function returned status: %d",status);
     UT_ASSERT_EQUAL(status, STATUS_FAILURE);
-
-
-
     UT_LOG("Exiting test_l1_dhcp4cApi_negative_1_dhcp4c_get_ert_lease_time...");
 }
 
@@ -183,25 +173,19 @@ void test_l1_dhcp4cApi_negative_1_dhcp4c_get_ert_lease_time(void)
 void test_l1_dhcp4cApi_positive1_dhcp4c_get_ert_remain_lease_time(void)
 {
     UT_LOG("Entering test_l1_dhcp4cApi_positive1_dhcp4c_get_ert_remain_lease_time...");
-
-    unsigned int value;
-
-    int status = dhcp4c_get_ert_remain_lease_time(&value);
-
+    unsigned int value = 0;
     UT_LOG("Invoking dhcp4c_get_ert_remain_lease_time with pValue = &value");
+    int status = dhcp4c_get_ert_remain_lease_time(&value);
     UT_LOG("Function returned status: %d",status);
     UT_LOG("Function returned Value: %u", value);
-
     UT_ASSERT_EQUAL(status, STATUS_SUCCESS);
-    if(value >= 0 && value <= UINT32_MAX){
+    if (value >= 0 && value <= UINT32_MAX) {
         UT_LOG("ert_remain_lease_time is %u which is a valid value.", value);
         UT_PASS("dhcp4c_get_ert_remain_lease_time validation success");
-    }
-	else{
-		UT_LOG("ert_remain_lease_time is %u which is a invalid value.", value);
+    } else {
+	UT_LOG("ert_remain_lease_time is %u which is a invalid value.", value);
         UT_FAIL("dhcp4c_get_ert_remain_lease_time validation failed");	
     }
-
     UT_LOG("Exiting test_l1_dhcp4cApi_positive1_dhcp4c_get_ert_remain_lease_time...");
 }
 
@@ -226,14 +210,11 @@ void test_l1_dhcp4cApi_positive1_dhcp4c_get_ert_remain_lease_time(void)
 void test_l1_dhcp4cApi_negative1_dhcp4c_get_ert_remain_lease_time(void)
 {
     UT_LOG("Entering test_l1_dhcp4cApi_negative1_dhcp4c_get_ert_remain_lease_time...");
-
     unsigned int *pValue = NULL;
-    int status = dhcp4c_get_ert_remain_lease_time(pValue);
-
     UT_LOG("Invoking dhcp4c_get_ert_remain_lease_time with pValue = NULL");
+    int status = dhcp4c_get_ert_remain_lease_time(pValue);
     UT_LOG("Function returned status: %d",status);
     UT_ASSERT_EQUAL(status, STATUS_FAILURE);
-
     UT_LOG("Exiting test_l1_dhcp4cApi_negative1_dhcp4c_get_ert_remain_lease_time...");
 }
 
@@ -253,28 +234,23 @@ void test_l1_dhcp4cApi_negative1_dhcp4c_get_ert_remain_lease_time(void)
 * **Test Procedure:**
 * | Variation / Step | Description | Test Data |Expected Result |Notes |
 * | :----: | --------- | ---------- |-------------- | ----- |
-* | 01 | Invoke dhcp4c_get_ert_remain_renew_time with valid pValue| Value = valid memory address, range is 0 to (2^32)-1 | STATUS_SUCCESS | Should be successful |
+* | 01 | Invoke dhcp4c_get_ert_remain_renew_time with valid pValue| Value = valid memory address | STATUS_SUCCESS | range is 0 to (2^32)-1 |
 */
 void test_l1_dhcp4cApi_positive1_get_ert_remain_renew_time(void) {
     UT_LOG("Entering test_l1_dhcp4cApi_positive1_get_ert_remain_renew_time...");
-
-    unsigned int value;
-    int status = dhcp4c_get_ert_remain_renew_time(&value);
-
+    unsigned int value = 0;
     UT_LOG("Invoking dhcp4c_get_ert_remain_renew_time with pValue = valid memory address");
+    int status = dhcp4c_get_ert_remain_renew_time(&value);
     UT_LOG("Return status: %d", status);
     UT_LOG("Return value: %u", value);
-
     UT_ASSERT_EQUAL(status, STATUS_SUCCESS);
-    if(value >= 0 && value <= UINT32_MAX){
-        UT_LOG("ert_remain_renew_time is %u which is a valid value.", value);
-        UT_PASS("dhcp4c_get_ert_remain_renew_time validation success");
-    }
-	else{
-		UT_LOG("ert_remain_renew_time is %u which is a invalid value.", value);
+    if(value >= 0 && value <= UINT32_MAX) {
+       UT_LOG("ert_remain_renew_time is %u which is a valid value.", value);
+       UT_PASS("dhcp4c_get_ert_remain_renew_time validation success");
+    } else {
+	UT_LOG("ert_remain_renew_time is %u which is a invalid value.", value);
         UT_FAIL("dhcp4c_get_ert_remain_renew_time validation failed");	
     }
-
     UT_LOG("Exiting test_l1_dhcp4cApi_positive1_get_ert_remain_renew_time...");
 }
 
@@ -298,15 +274,11 @@ void test_l1_dhcp4cApi_positive1_get_ert_remain_renew_time(void) {
  */
 void test_l1_dhcp4cApi_negative1_get_ert_remain_renew_time(void) {
     UT_LOG("Entering test_l1_dhcp4cApi_negative1_get_ert_remain_renew_time...");
-
     unsigned int *pValue = NULL;
-    int status = dhcp4c_get_ert_remain_renew_time(pValue);
-
     UT_LOG("Invoking dhcp4c_get_ert_remain_renew_time with pValue = NULL");
+    int status = dhcp4c_get_ert_remain_renew_time(pValue);
     UT_LOG("Return status: %d", status);
-
     UT_ASSERT_EQUAL(status, STATUS_FAILURE);
-
     UT_LOG("Exiting test_l1_dhcp4cApi_negative1_get_ert_remain_renew_time...");
 }
 
@@ -334,25 +306,19 @@ void test_l1_dhcp4cApi_negative1_get_ert_remain_renew_time(void) {
 void test_l1_dhcp4cApi_positive_1_dhcp4c_get_ert_remain_rebind_time(void)
 {
     UT_LOG("Entering test_l1_dhcp4cApi_positive_1_dhcp4c_get_ert_remain_rebind_time...");
-
-    unsigned int value;
-    int status = dhcp4c_get_ert_remain_rebind_time(&value);
-    
+    unsigned int value = 0;
     UT_LOG("Invoking dhcp4c_get_ert_remain_rebind_time with valid memory address...");
+    int status = dhcp4c_get_ert_remain_rebind_time(&value);
     UT_LOG("Return status: status=%d", status);
     UT_LOG("Output value: value=%u", value);
-    
-    
     UT_ASSERT_EQUAL(status, STATUS_SUCCESS);
-    if(value >= 0 && value <= UINT32_MAX){
+    if (value >= 0 && value <= UINT32_MAX) {
         UT_LOG("ert_remain_rebind_time is %u which is a valid value.", value);
         UT_PASS("dhcp4c_get_ert_remain_rebind_time validation success");
-    }
-	else{
-		UT_LOG("ert_remain_rebind_time is %u which is a invalid value.", value);
+    } else {
+	UT_LOG("ert_remain_rebind_time is %u which is a invalid value.", value);
         UT_FAIL("dhcp4c_get_ert_remain_rebind_time validation failed");	
     }
-
     UT_LOG("Exiting test_l1_dhcp4cApi_positive_1_dhcp4c_get_ert_remain_rebind_time...");
 }
 
@@ -377,15 +343,11 @@ void test_l1_dhcp4cApi_positive_1_dhcp4c_get_ert_remain_rebind_time(void)
 void test_l1_dhcp4cApi_negative_1_dhcp4c_get_ert_remain_rebind_time(void)
 {
     UT_LOG("Entering test_l1_dhcp4cApi_negative_1_dhcp4c_get_ert_remain_rebind_time...");
-
     unsigned int *pValue = NULL;
-    int status = dhcp4c_get_ert_remain_rebind_time(pValue);
-
     UT_LOG("Invoking dhcp4c_get_ert_remain_rebind_time with NULL pointer...");
+    int status = dhcp4c_get_ert_remain_rebind_time(pValue);
     UT_LOG("Return status: status=%d", status);
-
     UT_ASSERT_EQUAL(status, STATUS_FAILURE);
-
     UT_LOG("Exiting test_l1_dhcp4cApi_negative_1_dhcp4c_get_ert_remain_rebind_time...");
 }
 
@@ -408,24 +370,20 @@ void test_l1_dhcp4cApi_negative_1_dhcp4c_get_ert_remain_rebind_time(void)
     * | 01 | Invoking "dhcp4c_get_ert_config_attempts" API with valid memory address for pValue | pValue = valid memory address | status = STATUS_SUCCESS, value >= 0 and value <= UINT_MAX | Should be successful |
     */
 void test_l1_dhcp4cApi_positive1_dhcp4c_get_ert_config_attempts(void) {
-    int value;
     UT_LOG("Entering test_l1_dhcp4cApi_positive1_dhcp4c_get_ert_config_attempts...");
-
-    int status = dhcp4c_get_ert_config_attempts(&value);
-
+    int value = 0;
     UT_LOG("Invoking dhcp4c_get_ert_config_attempts with input parameters: pValue = valid memory address");
+    int status = dhcp4c_get_ert_config_attempts(&value);
     UT_LOG("Return status = %d", status);
     UT_LOG("Return value = %d", value);
     UT_ASSERT_EQUAL(status, STATUS_SUCCESS);
     if(value >= 0 && value <= 2147483647){
-        UT_LOG("ert_config_attempts is %d which is a valid value.", value);
-        UT_PASS("dhcp4c_get_ert_config_attempts validation success");
-    }
-	else{
-		UT_LOG("ert_config_attempts is %d which is a invalid value.", value);
+       UT_LOG("ert_config_attempts is %d which is a valid value.", value);
+       UT_PASS("dhcp4c_get_ert_config_attempts validation success");
+    } else {
+	UT_LOG("ert_config_attempts is %d which is a invalid value.", value);
         UT_FAIL("dhcp4c_get_ert_config_attempts validation failed");	
     }
-
     UT_LOG("Exiting test_l1_dhcp4cApi_positive1_dhcp4c_get_ert_config_attempts...");
 }
 
@@ -449,14 +407,11 @@ void test_l1_dhcp4cApi_positive1_dhcp4c_get_ert_config_attempts(void) {
 */
 void test_l1_dhcp4cApi_negative1_dhcp4c_get_ert_config_attempts(void) {
     UT_LOG("Entering test_l1_dhcp4cApi_negative1_dhcp4c_get_ert_config_attempts...");
-
     int *pValue = NULL;
-    int status = dhcp4c_get_ert_config_attempts(pValue);
-
     UT_LOG("Invoking dhcp4c_get_ert_config_attempts with input parameters: pValue = NULL");
+    int status = dhcp4c_get_ert_config_attempts(pValue);
     UT_LOG("Return  status = %d", status);
     UT_ASSERT_EQUAL(status, STATUS_FAILURE);
-
     UT_LOG("Exiting test_l1_dhcp4cApi_negative1_dhcp4c_get_ert_config_attempts...");
 }
 
@@ -480,18 +435,14 @@ void test_l1_dhcp4cApi_negative1_dhcp4c_get_ert_config_attempts(void) {
 */
 void test_l1_dhcp4cApi_positive1_dhcp4c_get_ert_ifname(void)
 {
-    char pValue[64];
-    
     UT_LOG("Entering test_l1_dhcp4cApi_positive1_dhcp4c_get_ert_ifname...");
-
+    char pValue[64] = {"\0"};
+    UT_LOG("Invoking dhcp4c_get_ert_ifname with valid memory address.");
     // Test the positive case
     int result = dhcp4c_get_ert_ifname(pValue);
-
-    UT_LOG("Invoking dhcp4c_get_ert_ifname with valid memory address.");
     UT_LOG("Return  status = %d", result);
     UT_LOG("Return value = %s",pValue);
     UT_ASSERT_EQUAL(result, STATUS_SUCCESS);
-
     UT_LOG("Exiting test_l1_dhcp4cApi_positive1_dhcp4c_get_ert_ifname...");
 }
 
@@ -516,17 +467,13 @@ void test_l1_dhcp4cApi_positive1_dhcp4c_get_ert_ifname(void)
  */
 void test_l1_dhcp4cApi_negative1_dhcp4c_get_ert_ifname(void)
 {
-    char *pValue = NULL;
-    
     UT_LOG("Entering test_l1_dhcp4cApi_negative1_dhcp4c_get_ert_ifname...");
-
+    char *pValue = NULL;
+    UT_LOG("Invoking dhcp4c_get_ert_ifname with NULL pointer.");
     // Test the negative case
     int result = dhcp4c_get_ert_ifname(pValue);
-
-    UT_LOG("Invoking dhcp4c_get_ert_ifname with NULL pointer.");
     UT_LOG("Return  status = %d", result);
     UT_ASSERT_EQUAL(result, STATUS_FAILURE);
-
     UT_LOG("Exiting test_l1_dhcp4cApi_negative1_dhcp4c_get_ert_ifname...");
 }
 
@@ -552,26 +499,20 @@ void test_l1_dhcp4cApi_negative1_dhcp4c_get_ert_ifname(void)
 void test_l1_dhcp4cApi_positive_1_GetErtFsmState(void)
 {
     UT_LOG("Entering test_l1_dhcp4cApi_positive_1_GetErtFsmState...");
-
-    int value;
-    int result = dhcp4c_get_ert_fsm_state(&value);
-
+    int value = 0;
     UT_LOG("Invoking dhcp4c_get_ert_fsm_state() with valid pValue pointer.");
+    int result = dhcp4c_get_ert_fsm_state(&value);
     UT_LOG("Return  status = %d", result);
     UT_LOG("Return  value = %d", value);
     UT_ASSERT_EQUAL(result, STATUS_SUCCESS);
-
     if(value >= 1 && value <= 6){
         UT_LOG("ert_fsm_stat is %d which is a valid value.", value);
         UT_PASS("dhcp4c_get_ert_fsm_state validation success");
-    }
-	else{
-		UT_LOG("ert_fsm_stat is %d which is a invalid value.", value);
+    } else {
+	UT_LOG("ert_fsm_stat is %d which is a invalid value.", value);
         UT_FAIL("dhcp4c_get_ert_fsm_state validation failed");	
     }
-
     UT_LOG("Function returned STATUS_SUCCESS and pValue is between 0 to 6.");
-
     UT_LOG("Exiting test_l1_dhcp4cApi_positive_1_GetErtFsmState...");
 }
 
@@ -596,14 +537,11 @@ void test_l1_dhcp4cApi_positive_1_GetErtFsmState(void)
 void test_l1_dhcp4cApi_negative_1_GetErtFsmState_NullPointer(void)
 {
     UT_LOG("Entering test_l1_dhcp4cApi_negative_1_GetErtFsmState_NullPointer...");
-
     int *pValue = NULL;
-    int result = dhcp4c_get_ert_fsm_state(pValue);
-
     UT_LOG("Invoking dhcp4c_get_ert_fsm_state() with pValue as NULL pointer.");
+    int result = dhcp4c_get_ert_fsm_state(pValue);
     UT_LOG("Return  status = %d", result);
     UT_ASSERT_EQUAL(result, STATUS_FAILURE);
-
     UT_LOG("Exiting test_l1_dhcp4cApi_negative_1_GetErtFsmState_NullPointer...");
 }
 
@@ -622,28 +560,24 @@ void test_l1_dhcp4cApi_negative_1_GetErtFsmState_NullPointer(void)
  *
  * **Test Procedure:**
  *
- * | Variation / Step | Description                                                                                                            | Test Data                        | Expected Result                                      | Notes                |
- * | :--------------: | ---------------------------------------------------------------------------------------------------------------------- | -------------------------------- | ---------------------------------------------------- | -------------------- |
- * |       01         | Invoking dhcp4c_get_ert_ip_addr with valid memory address                                                              |                                  | Return status equal to STATUS_SUCCESS                 | Should be successful |
+ * | Variation / Step | Description | Test Data | Expected Result | Notes  |
+ * | :--------------: | ------------| ---------------------| -------------------------------- | -------------------- |
+ * | 01 | Invoking dhcp4c_get_ert_ip_addr with valid memory address | pValue = 9 | STATUS_SUCCESS | Should be successful |
  *
  */
 void test_l1_dhcp4cApi_positive_1_dhcp4c_get_ert_ip_addr(void)
 {
     UT_LOG("Entering test_l1_dhcp4cApi_positive_1_dhcp4c_get_ert_ip_addr...");
-
-    unsigned int ipAddr;
+    unsigned int ipAddr = 9;
     char ip_str[20] = "";
-    int status = dhcp4c_get_ert_ip_addr(&ipAddr);
-
     UT_LOG("Invoking dhcp4c_get_ert_ip_addr with valid memory address...");
+    int status = dhcp4c_get_ert_ip_addr(&ipAddr);
     UT_LOG("Return Status: %d", status);
     UT_ASSERT_EQUAL(status, STATUS_SUCCESS);
-
     memset(&addr, 0, sizeof(struct in_addr));
     addr.s_addr = ipAddr;
     strcpy(ip_str,inet_ntoa(addr));
     UT_LOG("ip_str: %s", ip_str);
-
    if (isIpAddressInRange(ip_str,"1.0.0.0","127.0.0.0") || isIpAddressInRange(ip_str,"128.0.0.0","191.255.0.0") || isIpAddressInRange(ip_str,"192.0.0.0","223.255.255.0")){
         UT_LOG("ert_ip_addr is %s which is a valid value.", ip_str);
         UT_PASS("dhcp4c_get_ert_ip_addr validation success");
@@ -676,14 +610,10 @@ void test_l1_dhcp4cApi_positive_1_dhcp4c_get_ert_ip_addr(void)
 void test_l1_dhcp4cApi_negative_1_dhcp4c_get_ert_ip_addr(void)
 {
     UT_LOG("Entering test_l1_dhcp4cApi_negative_1_dhcp4c_get_ert_ip_addr...");
-
-    int status = dhcp4c_get_ert_ip_addr(NULL);
-
     UT_LOG("Invoking dhcp4c_get_ert_ip_addr with NULL pointer...");
+    int status = dhcp4c_get_ert_ip_addr(NULL);
     UT_LOG("Return Status: %d", status);
-
     UT_ASSERT_EQUAL(status, STATUS_FAILURE);
-
     UT_LOG("Exiting test_l1_dhcp4cApi_negative_1_dhcp4c_get_ert_ip_addr...");
 }
 
@@ -708,22 +638,20 @@ void test_l1_dhcp4cApi_negative_1_dhcp4c_get_ert_ip_addr(void)
 void test_l1_dhcp4cApi_positive1_dhcp4c_get_ert_mask(void)
 {
     UT_LOG("Entering test_l1_dhcp4cApi_positive1_dhcp4c_get_ert_mask...");
-
-    unsigned int value;
+    unsigned int value = 0;
     unsigned int octet1 = 0;
     unsigned int octet2 = 0;
     unsigned int octet3 = 0;
     unsigned int octet4 = 0;
-    int status = dhcp4c_get_ert_mask(&value);
 
     UT_LOG("Invoking dhcp4c_get_ert_mask with pValue = %u", value);
+    int status = dhcp4c_get_ert_mask(&value);
     UT_LOG("Returned status: %d", status);
     if (status == 0)
     {
         UT_LOG("pValue range for every octet is between 0 to 255");
     }
     UT_ASSERT_EQUAL(status, STATUS_SUCCESS);
-
     octet1 = (value >> 24) & 0xFF;
     octet2 = (value >> 16) & 0xFF;
     octet3 = (value >> 8) & 0xFF;
@@ -759,15 +687,11 @@ void test_l1_dhcp4cApi_positive1_dhcp4c_get_ert_mask(void)
 void test_l1_dhcp4cApi_negative1_dhcp4c_get_ert_mask(void)
 {
     UT_LOG("Entering test_l1_dhcp4cApi_negative1_dhcp4c_get_ert_mask...");
-
     unsigned int *pValue = NULL;
-    int status = dhcp4c_get_ert_mask(pValue);
-
     UT_LOG("Invoking dhcp4c_get_ert_mask with pValue = %p", pValue);
+    int status = dhcp4c_get_ert_mask(pValue);
     UT_LOG("Returned status: %d", status);
-
     UT_ASSERT_EQUAL(status, STATUS_FAILURE);
-
     UT_LOG("Exiting test_l1_dhcp4cApi_negative1_dhcp4c_get_ert_mask...");
 }
 
@@ -788,26 +712,22 @@ void test_l1_dhcp4cApi_negative1_dhcp4c_get_ert_mask(void)
 * **Test Procedure:**
 * | Variation / Step | Description | Test Data | Expected Result | Notes |
 * | :----: | --------- | ---------- |-------------- | ----- |
-* | 01 | Invoking dhcp4c_get_ert_gw with valid memory address | pValue = uninitialized | pValue should be within 1-127 or 128-191 or 192-223 | Should be successful |
+* | 01 | Invoking dhcp4c_get_ert_gw with valid memory address | pValue = valid value| pValue should be within 1-127 or 128-191 or 192-223 | Should be successful |
 */
 
 void test_l1_dhcp4cApi_positive_1_get_ert_gw(void)
 {
     UT_LOG("Entering test_l1_dhcp4cApi_positive_1_get_ert_gw...");
-
     // Preconditions: None
-
     char ip_str[20] = "";    
-    unsigned int ipAddr;
-    int result = dhcp4c_get_ert_gw(&ipAddr);
-
-    // Test case description
+    unsigned int ipAddr = 9;
     UT_LOG("Invoking dhcp4c_get_ert_gw with valid memory address");
+    int result = dhcp4c_get_ert_gw(&ipAddr);
+    // Test case description
     UT_LOG("Return Status: %d", result);
     // Check the return value
     UT_ASSERT_EQUAL(result, STATUS_SUCCESS);
     UT_LOG("ipAddr = %u", ipAddr);
-    
     memset(&addr, 0, sizeof(struct in_addr));
     addr.s_addr = ipAddr;
     strcpy(ip_str,inet_ntoa(addr));
@@ -816,7 +736,7 @@ void test_l1_dhcp4cApi_positive_1_get_ert_gw(void)
    if (isIpAddressInRange(ip_str,"1.0.0.0","127.0.0.0") || isIpAddressInRange(ip_str,"128.0.0.0","191.255.0.0") || isIpAddressInRange(ip_str,"192.0.0.0","223.255.255.0")){
         UT_LOG("ert_ip_addr is %s which is a valid value.", ip_str);
         UT_PASS("dhcp4c_get_ert_ip_addr validation success");
-    } else{
+    } else {
         UT_LOG("ert_ip_addr is %s which is a invalid value.", ip_str);
         UT_FAIL("dhcp4c_get_ert_ip_addr validation failed");
     }
@@ -844,18 +764,14 @@ void test_l1_dhcp4cApi_positive_1_get_ert_gw(void)
 void test_l1_dhcp4cApi_negative_1_get_ert_gw(void)
 {
     UT_LOG("Entering test_l1_dhcp4cApi_negative_1_get_ert_gw...");
-
     // Preconditions: None
-
     unsigned int *pValue = NULL;
-    int result = dhcp4c_get_ert_gw(pValue);
-
-    // Test case description
     UT_LOG("Invoking dhcp4c_get_ert_gw with NULL pointer");
+    int result = dhcp4c_get_ert_gw(pValue);
+    // Test case description
     UT_LOG("Return Status: %d", result);
     // Check the return value
     UT_ASSERT_EQUAL(result, STATUS_FAILURE);
-
     UT_LOG("Exiting test_l1_dhcp4cApi_negative_1_get_ert_gw...");
 }
 
@@ -884,30 +800,25 @@ void test_l1_dhcp4cApi_positive_1_get_ert_dns_svrs(void) {
     int dns_svrs;
     ipv4AddrList_t ip_list;
     memset(&ip_list, 0, sizeof(ipv4AddrList_t));
-
     int status = dhcp4c_get_ert_dns_svrs(&ip_list);
-
     UT_LOG("Invoking dhcp4c_get_ert_dns_svrs with valid memory for ipv4AddrList_t");
     UT_LOG("Return status: %d", status);
     UT_LOG("Number of IP addresses: %d", ip_list.number);
     UT_LOG("First IP address: %u.%u.%u.%u", ip_list.addrList[0], ip_list.addrList[1], ip_list.addrList[2], ip_list.addrList[3]);
-
     UT_ASSERT_EQUAL(status, STATUS_SUCCESS);
-    if(((ip_list.number >= -2147483648)&&(ip_list.number <= 2147483647)) || ((ip_list.number >= 1)&&(ip_list.number <= 4)))
-    {
+    if (((ip_list.number >= -2147483648)&&(ip_list.number <= 2147483647)) || ((ip_list.number >= 1)&&(ip_list.number <= 4))) {
         UT_LOG("number of ert_dns_svrs is %d which is a valid value.", ip_list.number);
         UT_PASS("dhcp4c_get_ert_dns_svrs validation success");
     } else {
 	UT_LOG("number of ert_dns_svrs is %d which is a invalid value.", ip_list.number);
         UT_FAIL("dhcp4c_get_ert_dns_svrs validation failed");		
-   }
+    }
    
    for (dns_svrs = 0; dns_svrs < ip_list.number; dns_svrs++) {
         memset(ip_str, 0, sizeof(ip_str));
 	memset(&addr, 0, sizeof(addr));
         addr.s_addr = ip_list.addrList[dns_svrs];
         strcpy(ip_str,inet_ntoa(addr));
-	
         UT_LOG("Return value after modification: %s", ip_str);
         /* Verify IP address falls within valid ranges */
         if (isIpAddressInRange(ip_str,"1.0.0.0","127.0.0.0") || isIpAddressInRange(ip_str,"128.0.0.0","191.255.0.0") || isIpAddressInRange(ip_str,"192.0.0.0","223.255.255.0")){
@@ -918,7 +829,6 @@ void test_l1_dhcp4cApi_positive_1_get_ert_dns_svrs(void) {
            UT_FAIL("dhcp4c_get_ert_dns_svrs validation failed");
         }
    }
-   
    UT_LOG("Exiting test_l1_dhcp4c_api_positive1_dhcpv4c_get_ecm_dns_svrs...");
 }
 
@@ -942,13 +852,10 @@ void test_l1_dhcp4cApi_positive_1_get_ert_dns_svrs(void) {
 */
 void test_l1_dhcp4cApi_negative_1_get_ert_dns_svrs(void) {
     UT_LOG("Entering test_l1_dhcp4cApi_negative_1_get_ert_dns_svrs...");
-
-    int result = dhcp4c_get_ert_dns_svrs(NULL);
-
     UT_LOG("Invoking dhcp4c_get_ert_dns_svrs with pList: NULL");
+    int result = dhcp4c_get_ert_dns_svrs(NULL);
     UT_LOG("Return Status: %d", result);
     UT_ASSERT_EQUAL(result, STATUS_FAILURE);
-
     UT_LOG("Exiting test_l1_dhcp4cApi_negative_1_get_ert_dns_svrs...");
 }
 
@@ -966,42 +873,34 @@ void test_l1_dhcp4cApi_negative_1_get_ert_dns_svrs(void) {
  * **User Interaction:** If the user chooses to run the test in interactive mode, this test case has to be selected via console.
  *
  * **Test Procedure:**
- * | Variation / Step | Description                                                                                               | Test Data                                                                                        | Expected Result          | Notes              |
- * | :------------: | --------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------- | ------------------ |
- * |       01       | Invoking dhcp4c_get_ert_dhcp_svr with valid memory address.                                                 | None                                                                                            | STATUS_SUCCESS           | Should be successful. |
+ * | Variation / Step | Description | Test Data | Expected Result | Notes |
+ * | :------------: | ------------------------------- | --------------------------- | ------------------ | ------------------ |
+ * |       01       | Invoking dhcp4c_get_ert_dhcp_svr with valid memory address. | ipAddr with valid value | STATUS_SUCCESS | Should be successful. |
  *
  */
 void test_l1_dhcp4cApi_positive_1_get_ert_dhcp_svr(void)
 {
-    unsigned int ipAddr;
+    unsigned int ipAddr = 9;
     char ip_str[20] = "";    
-
     int result;
-
     UT_LOG("Entering test_l1_dhcp4cApi_positive_1_get_ert_dhcp_svr...");
-
-    result = dhcp4c_get_ert_dhcp_svr(&ipAddr);
-
     UT_LOG("Invoking dhcp4c_get_ert_dhcp_svr with valid memory address.");
+    result = dhcp4c_get_ert_dhcp_svr(&ipAddr);
     UT_LOG("Return Status: %d", result);
     UT_LOG("Output: ipAddr = %u", ipAddr);
-
-
     UT_ASSERT_EQUAL(result, STATUS_SUCCESS);
-    
     memset(&addr, 0, sizeof(struct in_addr));
     addr.s_addr = ipAddr;
     strcpy(ip_str,inet_ntoa(addr));
     UT_LOG("ip_str: %s", ip_str);
 
-   if (isIpAddressInRange(ip_str,"1.0.0.0","127.0.0.0") || isIpAddressInRange(ip_str,"128.0.0.0","191.255.0.0") || isIpAddressInRange(ip_str,"192.0.0.0","223.255.255.0")){
+   if (isIpAddressInRange(ip_str,"1.0.0.0","127.0.0.0") || isIpAddressInRange(ip_str,"128.0.0.0","191.255.0.0") || isIpAddressInRange(ip_str,"192.0.0.0","223.255.255.0")) {
         UT_LOG("ert_ip_addr is %s which is a valid value.", ip_str);
         UT_PASS("dhcp4c_get_ert_ip_addr validation success");
-    } else{
+    } else {
         UT_LOG("ert_ip_addr is %s which is a invalid value.", ip_str);
         UT_FAIL("dhcp4c_get_ert_ip_addr validation failed");
     }
-
     UT_LOG("Exiting test_l1_dhcp4cApi_positive_1_get_ert_dhcp_svr...");
 }
 
@@ -1027,18 +926,13 @@ void test_l1_dhcp4cApi_positive_1_get_ert_dhcp_svr(void)
 void test_l1_dhcp4cApi_negative_1_get_ert_dhcp_svr(void)
 {
     int result;
-
     UT_LOG("Entering test_l1_dhcp4cApi_negative_1_get_ert_dhcp_svr...");
-
-    result = dhcp4c_get_ert_dhcp_svr(NULL);
-
     UT_LOG("Invoking dhcp4c_get_ert_dhcp_svr with NULL pointer.");
+    result = dhcp4c_get_ert_dhcp_svr(NULL);
     UT_LOG("Return Status: %d", result);
     UT_LOG("Expected Result: STATUS_FAILURE");
-
     UT_ASSERT_EQUAL(result, STATUS_FAILURE);
     // Add more asserts if required
-
     UT_LOG("Exiting test_l1_dhcp4cApi_negative_1_get_ert_dhcp_svr...");
 }
 
@@ -1063,29 +957,23 @@ void test_l1_dhcp4cApi_negative_1_get_ert_dhcp_svr(void)
 void test_l1_dhcp4cApi_positive1_dhcp4c_get_ecm_lease_time(void)
 {
     unsigned int value = 0;
-    
     // Log entering test function
     UT_LOG("Entering test_l1_dhcp4cApi_positive1_dhcp4c_get_ecm_lease_time...");
-    
     // Invoke the API
-    int status = dhcp4c_get_ecm_lease_time(&value);
-    
-    // Log the test description and expected output
     UT_LOG("Invoking dhcp4c_get_ecm_lease_time with valid memory address (pValue=%p)", &value);
+    int status = dhcp4c_get_ecm_lease_time(&value);
+    // Log the test description and expected output
     UT_LOG("Return Status: %d", status); 
     UT_LOG("Output: value=%u, status=%d", value, status);
-  
     // Check the return value
     UT_ASSERT_EQUAL(status, STATUS_SUCCESS);
-    if(value >= 60 && value <= 604800){
+    if(value >= 60 && value <= 604800) {
         UT_LOG("ecm_lease_time is %u which is a valid value.", value);
         UT_PASS("dhcp4c_get_ecm_lease_time validation success");
-    }
-	else{
-		UT_LOG("ecm_lease_time is %u which is a invalid value.", value);
+    } else {
+	UT_LOG("ecm_lease_time is %u which is a invalid value.", value);
         UT_FAIL("dhcp4c_get_ecm_lease_time validation failed");	
     }
-    
     // Log exiting test function
     UT_LOG("Exiting test_l1_dhcp4cApi_positive1_dhcp4c_get_ecm_lease_time...");
 }
@@ -1114,10 +1002,10 @@ void test_l1_dhcp4cApi_negative1_dhcp4c_get_ecm_lease_time(void)
     unsigned int *pValue = NULL;
     // Log entering test function
     UT_LOG("Entering test_l1_dhcp4cApi_negative1_dhcp4c_get_ecm_lease_time...");  
+    UT_LOG("Invoking dhcp4c_get_ecm_lease_time with NULL pointer (pValue=NULL)");
     // Invoke the API
     int status = dhcp4c_get_ecm_lease_time(pValue);
     // Log the test description and expected output
-    UT_LOG("Invoking dhcp4c_get_ecm_lease_time with NULL pointer (pValue=NULL)");
     UT_LOG("Output: status=%d", status);
     // Check the return value
     UT_ASSERT_EQUAL(status, STATUS_FAILURE);
@@ -1141,30 +1029,24 @@ void test_l1_dhcp4cApi_negative1_dhcp4c_get_ecm_lease_time(void)
 * **Test Procedure:**
 * | Variation / Step | Description | Test Data | Expected Result | Notes |
 * | :----: | ----------- | --------- | --------------- | ----- |
-* | 01 | Invoke dhcp4c_get_ecm_remain_lease_time | pValue = &value | STATUS_SUCCESS | Should be successful |
+* | 01 | Invoke dhcp4c_get_ecm_remain_lease_time with valid buffer | pValue = &value | STATUS_SUCCESS | Should be successful |
 */
 void test_l1_dhcp4cApi_positive1_dhcp4c_get_ecm_remain_lease_time(void)
 {
     UT_LOG("Entering test_l1_dhcp4cApi_positive1_dhcp4c_get_ecm_remain_lease_time...");
-
-    unsigned int value;
-    int status = dhcp4c_get_ecm_remain_lease_time(&value);
-
+    unsigned int value = 0;
     UT_LOG("Invoking dhcp4c_get_ecm_remain_lease_time with pValue = %p", &value);
+    int status = dhcp4c_get_ecm_remain_lease_time(&value);
     UT_LOG("Return status: %d", status);
     UT_LOG("Output values: value = %u", value);
-
-
     UT_ASSERT_EQUAL(status, STATUS_SUCCESS);
     if(value >= 0 && value <= UINT32_MAX){
         UT_LOG("ecm_remain_lease_tim is %u which is a valid value.", value);
         UT_PASS("dhcp4c_get_ecm_remain_lease_time validation success");
-    }
-	else{
-		UT_LOG("ecm_remain_lease_tim is %u which is a invalid value.", value);
+    } else {
+	UT_LOG("ecm_remain_lease_tim is %u which is a invalid value.", value);
         UT_FAIL("dhcp4c_get_ecm_remain_lease_time validation failed");	
     }
-
     UT_LOG("Exiting test_l1_dhcp4cApi_positive1_dhcp4c_get_ecm_remain_lease_time...");
 }
 
@@ -1191,12 +1073,9 @@ void test_l1_dhcp4cApi_negative1_dhcp4c_get_ecm_remain_lease_time(void)
 {
     UT_LOG("Entering test_l1_dhcp4cApi_negative1_dhcp4c_get_ecm_remain_lease_time...");
     unsigned int *pValue = NULL;
-    int status = dhcp4c_get_ecm_remain_lease_time(pValue);
-    int status = dhcp4c_get_ecm_remain_lease_time(pValue);
-
     UT_LOG("Invoking dhcp4c_get_ecm_remain_lease_time with pValue = NULL");
+    int status = dhcp4c_get_ecm_remain_lease_time(pValue);
     UT_LOG("Return status: %d", status);
-
     UT_ASSERT_EQUAL(status, STATUS_FAILURE);
     UT_LOG("Exiting test_l1_dhcp4cApi_negative1_dhcp4c_get_ecm_remain_lease_time...");
 }
@@ -1217,34 +1096,28 @@ void test_l1_dhcp4cApi_negative1_dhcp4c_get_ecm_remain_lease_time(void)
 * **Test Procedure:**
 * | Variation / Step | Description | Test Data | Expected Result | Notes |
 * | :----: | --------- | ---------- |-------------- | ----- |
-* | 01 | Invoke dhcp4c_get_ecm_remain_renew_time API | None | success | Should be successful |
+* | 01 | Invoke dhcp4c_get_ecm_remain_renew_time API with valid buffer| pValue = &value | success | Should be successful |
 */
 
 void test_l1_dhcp4cApi_positive1_dhcp4c_get_ecm_remain_renew_time(void)
 {
-    unsigned int value;
+    unsigned int value = 0;
     UT_LOG("Entering test_l1_dhcp4cApi_positive1_dhcp4c_get_ecm_remain_renew_time...");
-
     // Preconditions
-
     // Input
-    int status = dhcp4c_get_ecm_remain_renew_time(&value);
     UT_LOG("Invoking dhcp4c_get_ecm_remain_renew_time with valid memory address...");
+    int status = dhcp4c_get_ecm_remain_renew_time(&value);
     UT_LOG("Return status: %d", status);
     UT_LOG("ECM Interface Remaining Time to Renew: %u seconds", value);
-
     // Asserts
     UT_ASSERT_EQUAL(status, STATUS_SUCCESS);
-    if(value >= 0 && value <= UINT32_MAX){
+    if (value >= 0 && value <= UINT32_MAX) {
         UT_LOG("ecm_remain_renew_time is %u which is a valid value.", value);
         UT_PASS("dhcp4c_get_ert_lease_time validation success");
-    }
-	else{
-		UT_LOG("ecm_remain_renew_time is %u which is a invalid value.", value);
+    } else {
+	UT_LOG("ecm_remain_renew_time is %u which is a invalid value.", value);
         UT_FAIL("dhcp4c_get_ert_lease_time validation failed");	
     }
-
-
     UT_LOG("Exiting test_l1_dhcp4cApi_positive1_dhcp4c_get_ecm_remain_renew_time...");
 }
 
@@ -1264,22 +1137,20 @@ void test_l1_dhcp4cApi_positive1_dhcp4c_get_ecm_remain_renew_time(void)
 * **Test Procedure:**
 * | Variation / Step | Description | Test Data | Expected Result | Notes |
 * | :----: | --------- | ---------- |-------------- | ----- |
-* | 01 | Verify behavior of dhcp4c_get_ecm_remain_renew_time when NULL pointer is passed as input | pointer = NULL | STATUS_FAILURE is returned | Should return STATUS_FAILURE |
+* | 01 | Verify behavior of dhcp4c_get_ecm_remain_renew_time when NULL pointer is passed as input | pointer = NULL | STATUS_FAILURE | Should return STATUS_FAILURE |
 */
 
 void test_l1_dhcp4cApi_negative1_dhcp4c_get_ecm_remain_renew_time(void)
 {
     UT_LOG("Entering test_l1_dhcp4cApi_negative1_dhcp4c_get_ecm_remain_renew_time...");
     // Preconditions
-    
     unsigned int *pValue = NULL;
     // Input
-    int status = dhcp4c_get_ecm_remain_renew_time(pValue);
     UT_LOG("Invoking dhcp4c_get_ecm_remain_renew_time with NULL pointer...");
+    int status = dhcp4c_get_ecm_remain_renew_time(pValue);
     UT_LOG("Return status: %d", status); 
     // Asserts
     UT_ASSERT_EQUAL(status, STATUS_FAILURE);
-    
     UT_LOG("Exiting test_l1_dhcp4cApi_negative1_dhcp4c_get_ecm_remain_renew_time...");
 }
 
@@ -1301,27 +1172,22 @@ void test_l1_dhcp4cApi_negative1_dhcp4c_get_ecm_remain_renew_time(void)
  * 01. First set of conditions:
  *    | Variation / Step | Description | Test Data | Expected Result | Notes |
  *    | :--------------: | ----------- | --------- | --------------- | ----- |
- *    |       01         | -           | pValue = &value          | STATUS_SUCCESS  | Should be successful |
+ *    |       01         | Invoke dhcp4c_get_ecm_remain_rebind_time API with valid buffer | pValue = &value          | STATUS_SUCCESS  | Should be successful |
  */
 void test_l1_dhcp4c_get_ecm_remain_rebind_time_positive_1(void) {
     UT_LOG("Entering test_l1_dhcp4c_get_ecm_remain_rebind_time_positive_1...");
-
-    unsigned int value;
-    int result = dhcp4c_get_ecm_remain_rebind_time(&value);
-
+    unsigned int value = 0;
     UT_LOG("Invoking dhcp4c_get_ecm_remain_rebind_time with pValue = %p", &value);
+    int result = dhcp4c_get_ecm_remain_rebind_time(&value);
     UT_LOG("Returned value: %d", result);
-
     UT_ASSERT_EQUAL(result, STATUS_SUCCESS);
-    if(value >= 0 && value <= UINT32_MAX){
+    if (value >= 0 && value <= UINT32_MAX) {
         UT_LOG("ecm_remain_rebind_time is %u which is a valid value.", value);
         UT_PASS("dhcp4c_get_ecm_remain_rebind_time validation success");
-    }
-	else{
-		UT_LOG("ecm_remain_rebind_time is %u which is a invalid value.", value);
+    } else { 
+	UT_LOG("ecm_remain_rebind_time is %u which is a invalid value.", value);
         UT_FAIL("dhcp4c_get_ecm_remain_rebind_time validation failed");	
     }
-
     UT_LOG("Exiting test_l1_dhcp4c_get_ecm_remain_rebind_time_positive_1...");
 }
 
@@ -1347,11 +1213,9 @@ void test_l1_dhcp4c_get_ecm_remain_rebind_time_positive_1(void) {
 void test_l1_dhcp4c_get_ecm_remain_rebind_time_negative_1(void) {
     UT_LOG("Entering test_l1_dhcp4c_get_ecm_remain_rebind_time_negative_1...");
     unsigned int *pValue = NULL;
-    int result = dhcp4c_get_ecm_remain_rebind_time(pValue);
-
     UT_LOG("Invoking dhcp4c_get_ecm_remain_rebind_time with pValue = NULL");
+    int result = dhcp4c_get_ecm_remain_rebind_time(pValue);
     UT_LOG("Returned value: %d", result);
-
     UT_ASSERT_EQUAL(result, STATUS_FAILURE);
     UT_LOG("Exiting test_l1_dhcp4c_get_ecm_remain_rebind_time_negative_1...");
 }
@@ -1376,21 +1240,18 @@ void test_l1_dhcp4c_get_ecm_remain_rebind_time_negative_1(void) {
 */
 void test_l1_dhcp4cApi_positive_1_get_ecm_config_attempts(void) {
     UT_LOG("Entering test_l1_dhcp4cApi_positive_1_get_ecm_config_attempts...");
-    int pValue;
-    int status = dhcp4c_get_ecm_config_attempts(&pValue);
-
+    int pValue = 0;
     UT_LOG("Invoking dhcp4c_get_ecm_config_attempts with a valid memory address. Output: %d", pValue);
+    int status = dhcp4c_get_ecm_config_attempts(&pValue);
     UT_LOG("Returned status: %d", status);
     UT_ASSERT_EQUAL(STATUS_SUCCESS, status);
-    if(pValue >= -2147483648 && pValue <= 2147483647){
+    if (pValue >= -2147483648 && pValue <= 2147483647){
         UT_LOG("get_ecm_config_attempts is %d which is a valid value.", pValue);
         UT_PASS("dhcp4c_get_ecm_config_attempts validation success");
-    }
-	else{
-		UT_LOG("get_ecm_config_attempts is %d which is a invalid value.", pValue);
+    } else {
+	UT_LOG("get_ecm_config_attempts is %d which is a invalid value.", pValue);
         UT_FAIL("dhcp4c_get_ecm_config_attempts validation failed");	
     }
-    
     UT_LOG("Exiting test_l1_dhcp4cApi_positive_1_get_ecm_config_attempts...");
 }
 
@@ -1416,11 +1277,10 @@ void test_l1_dhcp4cApi_positive_1_get_ecm_config_attempts(void) {
 void test_l1_dhcp4cApi_negative_1_get_ecm_config_attempts(void) {
     UT_LOG("Entering test_l1_dhcp4cApi_negative_1_get_ecm_config_attempts...");
     int *pValue = NULL;
-    int status = dhcp4c_get_ecm_config_attempts(pValue);
     UT_LOG("Invoking dhcp4c_get_ecm_config_attempts with a NULL pointer.");
+    int status = dhcp4c_get_ecm_config_attempts(pValue);
     UT_LOG("Returned status: %d", status);
     UT_ASSERT_EQUAL(STATUS_FAILURE, status);
-
     UT_LOG("Exiting test_l1_dhcp4cApi_negative_1_get_ecm_config_attempts...");
 }
 
@@ -1445,20 +1305,14 @@ void test_l1_dhcp4cApi_negative_1_get_ecm_config_attempts(void) {
 */
 void test_l1_dhcp4cApi_positive1_dhcp4c_get_ecm_ifname(void)
 {
-    char pName[64];
-    int result;
-
     UT_LOG("Entering test_l1_dhcp4cApi_positive1_dhcp4c_get_ecm_ifname...");
-
-    result = dhcp4c_get_ecm_ifname(pName);
-
+    char pName[64] = {"\0"};
+    int result;
     UT_LOG("Invoking dhcp4c_get_ecm_ifname with valid pName buffer.");
+    result = dhcp4c_get_ecm_ifname(pName);
     UT_LOG("Return Status: %d", result);
     UT_LOG("Output: pName = %s", pName);
- 
-
     UT_ASSERT_EQUAL(result, STATUS_SUCCESS);
-
     UT_LOG("Exiting test_l1_dhcp4cApi_positive1_dhcp4c_get_ecm_ifname...");
     return;
 }
@@ -1484,19 +1338,14 @@ void test_l1_dhcp4cApi_positive1_dhcp4c_get_ecm_ifname(void)
 
 void test_l1_dhcp4cApi_negative1_dhcp4c_get_ecm_ifname(void)
 {
+    UT_LOG("Entering test_l1_dhcp4cApi_negative1_dhcp4c_get_ecm_ifname...");
     char *pName = NULL;
     int result;
-
-    UT_LOG("Entering test_l1_dhcp4cApi_negative1_dhcp4c_get_ecm_ifname...");
-
-    result = dhcp4c_get_ecm_ifname(pName);
-
     UT_LOG("Invoking dhcp4c_get_ecm_ifname with NULL pName buffer.");
+    result = dhcp4c_get_ecm_ifname(pName);
     UT_LOG("Return Status: %d", result);
     UT_LOG("Output: pName = NULL");
-
     UT_ASSERT_EQUAL(result, STATUS_FAILURE);
-
     UT_LOG("Exiting test_l1_dhcp4cApi_negative1_dhcp4c_get_ecm_ifname...");
     return;
 }
@@ -1522,28 +1371,23 @@ void test_l1_dhcp4cApi_negative1_dhcp4c_get_ecm_ifname(void)
 
 void test_l1_dhcp4cApi_positive_1_dhcp4c_get_ecm_fsm_state(void)
 {
-    int pValue;
     UT_LOG("Entering test_l1_dhcp4cApi_positive_1_dhcp4c_get_ecm_fsm_state...");
-
+    int pValue = 0;
     // Preconditions: None.
-
     // Input
     UT_LOG("Invoking dhcp4c_get_ecm_fsm_state with valid pValue...");
     int result = dhcp4c_get_ecm_fsm_state(&pValue);
-
     // Expected Output
     UT_LOG("Result: Function returns STATUS_SUCCESS with pValue = %d", pValue);
     UT_LOG("Returned status: %d", result);
     UT_ASSERT_EQUAL(STATUS_SUCCESS, result);
-    if((pValue >= 0) && (pValue <= 6)){
+    if ((pValue >= 0) && (pValue <= 6)) {
         UT_LOG("ecm_fsm_state is %d which is a valid value.", pValue);
         UT_PASS("dhcp4c_get_ecm_fsm_state validation success");
-    }
-	else{
-		UT_LOG("ecm_fsm_state is %d which is a invalid value.", pValue);
+    } else {
+	UT_LOG("ecm_fsm_state is %d which is a invalid value.", pValue);
         UT_FAIL("dhcp4c_get_ecm_fsm_state validation failed");	
     }
-
     UT_LOG("Exiting test_l1_dhcp4cApi_positive_1_dhcp4c_get_ecm_fsm_state...");
 }
 
@@ -1600,32 +1444,26 @@ void test_l1_dhcp4cApi_negative_1_dhcp4c_get_ecm_fsm_state(void)
 void test_l1_dhcp4cApi_positive1_dhcp4c_get_ecm_ip_addr(void)
 {
     UT_LOG("Entering test_l1_dhcp4cApi_positive1_dhcp4c_get_ecm_ip_addr...");
-
-    unsigned int ipAddr;
+    unsigned int ipAddr = 9;
     char ip_str[20] = "";
-    
     // Invoke the API with a valid memory address
     UT_LOG("Invoking dhcp4c_get_ecm_ip_addr with valid memory address...");
-  
     int status = dhcp4c_get_ecm_ip_addr(&ipAddr);
     UT_LOG("Return Status: %d", status);
     // Check the return status and log the result
     UT_LOG("Status: %d ipAddr:%u", status, ipAddr);
     UT_ASSERT_EQUAL(status, STATUS_SUCCESS);
-
     memset(&addr, 0, sizeof(struct in_addr));
     addr.s_addr = ipAddr;
     strcpy(ip_str,inet_ntoa(addr));
     UT_LOG("ip_str: %s", ip_str);
-
-    if (isIpAddressInRange(ip_str,"1.0.0.0","127.0.0.0") || isIpAddressInRange(ip_str,"128.0.0.0","191.255.0.0") || isIpAddressInRange(ip_str,"192.0.0.0","223.255.255.0")) {
+    if (isIpAddressInRange(ip_str,"1.0.0.0","127.0.0.0") || isIpAddressInRange(ip_str,"128.0.0.0","191.255.0.0") || isIpAddressInRange(ip_str,"192.0.0.0","223.255.255.0"))     {
         UT_LOG("ert_ip_addr is %s which is a valid value.", ip_str);
         UT_PASS("dhcp4c_get_ert_ip_addr validation success");
     } else {
         UT_LOG("ert_ip_addr is %s which is a invalid value.", ip_str);
         UT_FAIL("dhcp4c_get_ert_ip_addr validation failed");
     }
-
     UT_LOG("Exiting test_l1_dhcp4cApi_positive1_dhcp4c_get_ecm_ip_addr...");
 }
 
@@ -1650,17 +1488,13 @@ void test_l1_dhcp4cApi_positive1_dhcp4c_get_ecm_ip_addr(void)
 void test_l1_dhcp4cApi_negative1_dhcp4c_get_ecm_ip_addr(void)
 {
     UT_LOG("Entering test_l1_dhcp4cApi_negative1_dhcp4c_get_ecm_ip_addr...");
-
     int status;
-
     // Invoke the API with a NULL pointer
     UT_LOG("Invoking dhcp4c_get_ecm_ip_addr with NULL pointer...");
     status = dhcp4c_get_ecm_ip_addr(NULL);
-
     // Check the return status and log the result
     UT_LOG("Return Status: %d", status);
     UT_ASSERT_EQUAL(status, STATUS_FAILURE);
-
     UT_LOG("Exiting test_l1_dhcp4cApi_negative1_dhcp4c_get_ecm_ip_addr...");
 }
 
@@ -1689,20 +1523,15 @@ void test_l1_dhcp4cApi_positive1_dhcp4c_get_ecm_mask(void) {
     unsigned int octet2 = 0;
     unsigned int octet3 = 0;
     unsigned int octet4 = 0;
-    int status = dhcp4c_get_ecm_mask(&value);
-
     UT_LOG("Invoking dhcp4c_get_ecm_mask with pValue = %p", &value);
+    int status = dhcp4c_get_ecm_mask(&value);
     UT_LOG("Return status: %d", status);
     UT_LOG("Output values: pValue = %u", value);
- 
-
     UT_ASSERT_EQUAL(status, STATUS_SUCCESS);
-
     octet1 = (value >> 24) & 0xFF;
     octet2 = (value >> 16) & 0xFF;
     octet3 = (value >> 8) & 0xFF;
     octet4 = value & 0xFF;
-
     if ((octet1 >=0 && octet1 <= 255) && (octet2 >=0 && octet2 <= 255) && (octet3 >=0 && octet3 <= 255) && (octet4 >=0 && octet4 <= 255)) {
         UT_LOG("octet1 is %x, octet2 is %x, octet3 is %x, octet4 is %x which are  valid values.", octet1,octet2,octet3,octet4 );
         UT_PASS("dhcp4c_get_ert_mask validation success");
@@ -1710,7 +1539,6 @@ void test_l1_dhcp4cApi_positive1_dhcp4c_get_ecm_mask(void) {
         UT_LOG("octet1 is %x, octet2 is %x, octet3 is %x, octet4 is %x . there is one invalid value",octet1,octet2,octet3,octet4 );
         UT_FAIL("dhcp4c_get_ert_mask validation failed");
     }
-
     UT_LOG("Exiting test_l1_dhcp4cApi_positive1_dhcp4c_get_ecm_mask...");
 }
 
@@ -1728,22 +1556,18 @@ void test_l1_dhcp4cApi_positive1_dhcp4c_get_ecm_mask(void) {
 * **User Interaction:** If user chose to run the test in interactive mode, then the test case has to be selected via console
 *
 * **Test Procedure:**
-* | Variation / Step | Description                                                                                                            | Test Data                    | Expected Result                                   | Notes             |
-* | :----:          | ---------                                                                                                             | ----------                   |--------------                                    | -----             |
-* | 01              | Check behavior when input pointer is NULL                                                                              | pValue = NULL                | Return status should be -1                         | Should be successful |
+* | Variation / Step | Description | Test Data | Expected Result | Notes |
+* | :----: | --------- | ---------- | -------------- | -----             |
+* | 01     | Check behavior when input pointer is NULL | pValue = NULL | Return status should be -1 | Should be successful |
 */
 
 void test_l1_dhcp4cApi_negative1_dhcp4c_get_ecm_mask(void) {
     UT_LOG("Entering test_l1_dhcp4cApi_negative1_dhcp4c_get_ecm_mask...");
-
     unsigned int *pValue = NULL;
-    int status = dhcp4c_get_ecm_mask(pValue);
-
     UT_LOG("Invoking dhcp4c_get_ecm_mask with pValue = %p", pValue);
+    int status = dhcp4c_get_ecm_mask(pValue);
     UT_LOG("Return status: %d", status);
-
     UT_ASSERT_EQUAL(status, STATUS_FAILURE);
-
     UT_LOG("Exiting test_l1_dhcp4cApi_negative1_dhcp4c_get_ecm_mask...");
 }
 
@@ -1768,29 +1592,23 @@ void test_l1_dhcp4cApi_negative1_dhcp4c_get_ecm_mask(void) {
 void test_l1_dhcp4cApi_positive_1_dhcp4c_get_ecm_gw(void)
 {
     UT_LOG("Entering test_l1_dhcp4cApi_positive_1_dhcp4c_get_ecm_gw...");
-
-    unsigned int ipAddr;
+    unsigned int ipAddr = 9;
     char ip_str[20] = "";
-    int status = dhcp4c_get_ecm_gw(&ipAddr);
-
     UT_LOG("Invoking dhcp4c_get_ecm_gw with pValue as valid memory address");
+    int status = dhcp4c_get_ecm_gw(&ipAddr);
     UT_LOG("Return status: %d", status);
-    
     UT_ASSERT_EQUAL(status, STATUS_SUCCESS);
-
     memset(&addr, 0, sizeof(struct in_addr));
     addr.s_addr = ipAddr;
     strcpy(ip_str,inet_ntoa(addr));
     UT_LOG("ip_str: %s", ip_str);
-
-   if (isIpAddressInRange(ip_str,"1.0.0.0","127.0.0.0") || isIpAddressInRange(ip_str,"128.0.0.0","191.255.0.0") || isIpAddressInRange(ip_str,"192.0.0.0","223.255.255.0")){
+    if (isIpAddressInRange(ip_str,"1.0.0.0","127.0.0.0") || isIpAddressInRange(ip_str,"128.0.0.0","191.255.0.0") || isIpAddressInRange(ip_str,"192.0.0.0","223.255.255.0")){
         UT_LOG("ert_ip_addr is %s which is a valid value.", ip_str);
         UT_PASS("dhcp4c_get_ert_ip_addr validation success");
     } else{
         UT_LOG("ert_ip_addr is %s which is a invalid value.", ip_str);
         UT_FAIL("dhcp4c_get_ert_ip_addr validation failed");
     }
-
     UT_LOG("Exiting test_l1_dhcp4cApi_positive_1_dhcp4c_get_ecm_gw...");
 }
 
@@ -1815,14 +1633,10 @@ void test_l1_dhcp4cApi_positive_1_dhcp4c_get_ecm_gw(void)
 void test_l1_dhcp4cApi_negative_1_dhcp4c_get_ecm_gw(void)
 {
     UT_LOG("Entering test_l1_dhcp4cApi_negative_1_dhcp4c_get_ecm_gw...");
-
-    int status = dhcp4c_get_ecm_gw(NULL);
-
     UT_LOG("Invoking dhcp4c_get_ecm_gw with pValue as NULL");
+    int status = dhcp4c_get_ecm_gw(NULL);
     UT_LOG("Return status: %d", status);
-    
     UT_ASSERT_EQUAL(status, STATUS_FAILURE);
-
     UT_LOG("Exiting test_l1_dhcp4cApi_negative_1_dhcp4c_get_ecm_gw...");
 }
 
@@ -1848,19 +1662,16 @@ void test_l1_dhcp4cApi_negative_1_dhcp4c_get_ecm_gw(void)
 void test_l1_dhcp4cApi_positive2_dhcp4c_get_ecm_dns_svrs(void) {
     UT_LOG("Entering test_l1_dhcp4c_api_positive1_dhcpv4c_get_ecm_dns_svrs...");
     char ip_str[20];
-    int dns_svrs;
+    int dns_svrs = 9;
     ipv4AddrList_t ip_list;
     memset(&ip_list, 0, sizeof(ipv4AddrList_t));
-
     int status = dhcp4c_get_ecm_dns_svrs(&ip_list);
-
     UT_LOG("Invoking dhcp4c_get_ecm_dns_svrs with valid memory for ipv4AddrList_t");
     UT_LOG("Return status: %d", status);
     UT_LOG("Number of IP addresses: %d", ip_list.number);
     UT_LOG("First IP address: %u.%u.%u.%u", ip_list.addrList[0], ip_list.addrList[1], ip_list.addrList[2], ip_list.addrList[3]);
-
     UT_ASSERT_EQUAL(status, STATUS_SUCCESS);
-    if(((ip_list.number >= -2147483648)&&(ip_list.number <= 2147483647)) || ((ip_list.number >= 1)&&(ip_list.number <= 4)))
+    if (((ip_list.number >= -2147483648)&&(ip_list.number <= 2147483647)) || ((ip_list.number >= 1)&&(ip_list.number <= 4)))
     {
         UT_LOG("number of ert_dns_svrs is %d which is a valid value.", ip_list.number);
         UT_PASS("dhcp4c_get_ecm_dns_svrs validation success");
@@ -1868,8 +1679,7 @@ void test_l1_dhcp4cApi_positive2_dhcp4c_get_ecm_dns_svrs(void) {
 	UT_LOG("number of ert_dns_svrs is %d which is a invalid value.", ip_list.number);
         UT_FAIL("dhcp4c_get_ecm_dns_svrs validation failed");		
    }
-   
-   for (dns_svrs = 0; dns_svrs < ip_list.number; dns_svrs++){
+   for (dns_svrs = 0; dns_svrs < ip_list.number; dns_svrs++) {
         memset(ip_str, 0, sizeof(ip_str));
 	memset(&addr, 0, sizeof(addr));
         addr.s_addr = ip_list.addrList[dns_svrs];
@@ -1877,7 +1687,7 @@ void test_l1_dhcp4cApi_positive2_dhcp4c_get_ecm_dns_svrs(void) {
 	
         UT_LOG("Return value after modification: %s", ip_str);
         /* Verify IP address falls within valid ranges */
-        if (isIpAddressInRange(ip_str,"1.0.0.0","127.0.0.0") || isIpAddressInRange(ip_str,"128.0.0.0","191.255.0.0") || isIpAddressInRange(ip_str,"192.0.0.0","223.255.255.0")){
+        if (isIpAddressInRange(ip_str,"1.0.0.0","127.0.0.0") || isIpAddressInRange(ip_str,"128.0.0.0","191.255.0.0") || isIpAddressInRange(ip_str,"192.0.0.0","223.255.255.0"))     {
            UT_LOG("ert_dns_svrs is %s which is a valid value.", ip_str);
            UT_PASS("dhcp4c_get_ecm_dns_svrs validation success");
         } else {
@@ -1885,7 +1695,6 @@ void test_l1_dhcp4cApi_positive2_dhcp4c_get_ecm_dns_svrs(void) {
            UT_FAIL("dhcp4c_get_ecm_dns_svrs validation failed");
         }
    }
-   
    UT_LOG("Exiting test_l1_dhcp4c_api_positive1_dhcpv4c_get_ecm_dns_svrs...");
 }
 
@@ -1939,26 +1748,23 @@ void test_l1_dhcp4cApi_negative1_dhcp4c_get_ecm_dns_svrs(void) {
 void test_l1_dhcp4cApi_positive1_dhcp4c_get_ecm_dhcp_svr(void)
 {
     UT_LOG("Entering test_l1_dhcp4cApi_positive1_dhcp4c_get_ecm_dhcp_svr...");
-    unsigned int ipAddr;
+    unsigned int ipAddr = 9;
     char ip_str[20] = "";
-    int status = dhcp4c_get_ecm_dhcp_svr(&ipAddr);
-    
     UT_LOG("Invoking dhcp4c_get_ecm_dhcp_svr() with input parameters (pValue is a valid memory location)...");
+    int status = dhcp4c_get_ecm_dhcp_svr(&ipAddr);
     UT_LOG("Return status: status = %d", status);
-
     UT_ASSERT_EQUAL(status, STATUS_SUCCESS);
     memset(&addr, 0, sizeof(struct in_addr));
     addr.s_addr = ipAddr;
     strcpy(ip_str,inet_ntoa(addr));
     UT_LOG("ip_str: %s", ip_str);
-
    if (isIpAddressInRange(ip_str,"1.0.0.0","127.0.0.0") || isIpAddressInRange(ip_str,"128.0.0.0","191.255.0.0") || isIpAddressInRange(ip_str,"192.0.0.0","223.255.255.0")) {
         UT_LOG("ert_ip_addr is %s which is a valid value.", ip_str);
         UT_PASS("dhcp4c_get_ert_ip_addr validation success");
-    } else {
+   } else {
         UT_LOG("ert_ip_addr is %s which is a invalid value.", ip_str);
         UT_FAIL("dhcp4c_get_ert_ip_addr validation failed");
-    }
+   }
     UT_LOG("Exiting test_l1_dhcp4cApi_positive1_dhcp4c_get_ecm_dhcp_svr...");
 }
 
@@ -1984,15 +1790,11 @@ void test_l1_dhcp4cApi_positive1_dhcp4c_get_ecm_dhcp_svr(void)
 void test_l1_dhcp4cApi_negative1_dhcp4c_get_ecm_dhcp_svr(void)
 {
     UT_LOG("Entering test_l1_dhcp4cApi_negative1_dhcp4c_get_ecm_dhcp_svr...");
-
     unsigned int *pValue = NULL;
-    int status = dhcp4c_get_ecm_dhcp_svr(pValue);
-    
     UT_LOG("Invoking dhcp4c_get_ecm_dhcp_svr() with input parameters (pValue is NULL)...");
+    int status = dhcp4c_get_ecm_dhcp_svr(pValue);
     UT_LOG("Return status: status = %d", status);
-
     UT_ASSERT_EQUAL(status, STATUS_FAILURE);
-
     UT_LOG("Exiting test_l1_dhcp4cApi_negative1_dhcp4c_get_ecm_dhcp_svr...");
 }
 
@@ -2010,31 +1812,26 @@ void test_l1_dhcp4cApi_negative1_dhcp4c_get_ecm_dhcp_svr(void)
  * **User Interaction:** If the user chooses to run the test in interactive mode, they must select the test case via the console.
  *
  * **Test Procedure:**
- * 1. Invoke the dhcp4c_get_emta_remain_lease_time function with a valid memory address.
- * 
- * | Variation / Step | Description                                            | Test Data                               | Expected Result                        | Notes               |
- * | ---------------- | ------------------------------------------------------ | --------------------------------------- | -------------------------------------- | ------------------- |
- * | 01 | Invoke dhcp4c_get_emta_remain_lease_time with valid input | None | STATUS_SUCCESS | Should be successful |
+ * | Variation / Step | Description                                            | Test Data            | Expected Result  | Notes               |
+ * | ---------------- | ------------------------------------------------------ | --------------------------------------- | -------------------------| 
+ * | 01 | Invoke dhcp4c_get_emta_remain_lease_time with valid buffer | pValue = valid memory location | STATUS_SUCCESS | Should be successful |
  */
 
 void test_l1_dhcp4cApi_positive1_dhcp4c_get_emta_remain_lease_time(void)
 {
-    unsigned int value;
+    unsigned int value = 0;
     int result;
-
     UT_LOG("Entering test_l1_dhcp4cApi_positive1_dhcp4c_get_emta_remain_lease_time...");
-    result = dhcp4c_get_emta_remain_lease_time(&value);
     UT_LOG("Invoking dhcp4c_get_emta_remain_lease_time with a valid memory address.");
+    result = dhcp4c_get_emta_remain_lease_time(&value);
     UT_LOG("Return status: %d", result);
     UT_LOG("Output value: %u", value);
-
     UT_ASSERT_EQUAL(result, STATUS_SUCCESS);
     if(value >= 0 && value <= UINT32_MAX){
         UT_LOG("emta_remain_lease_time is %u which is a valid value.", value);
         UT_PASS("dhcp4c_get_emta_remain_lease_time validation success");
-    }
-	else{
-		UT_LOG("emta_remain_lease_time is %u which is a invalid value.", value);
+    } else{
+	UT_LOG("emta_remain_lease_time is %u which is a invalid value.", value);
         UT_FAIL("dhcp4c_get_emta_remain_lease_time validation failed");	
     }
     UT_LOG("Exiting test_l1_dhcp4cApi_positive1_dhcp4c_get_emta_remain_lease_time...");
@@ -2063,10 +1860,9 @@ void test_l1_dhcp4cApi_negative1_dhcp4c_get_emta_remain_lease_time(void)
 {
     unsigned int *pValue = NULL;
     int result;
-
     UT_LOG("Entering test_l1_dhcp4cApi_negative1_dhcp4c_get_emta_remain_lease_time...");
-    result = dhcp4c_get_emta_remain_lease_time(pValue);
     UT_LOG("Invoking dhcp4c_get_emta_remain_lease_time with a NULL pointer.");
+    result = dhcp4c_get_emta_remain_lease_time(pValue);
     UT_LOG("Return status: %d", result);
     UT_ASSERT_EQUAL(result, STATUS_FAILURE);
     UT_LOG("Exiting test_l1_dhcp4cApi_negative1_dhcp4c_get_emta_remain_lease_time...");
@@ -2092,12 +1888,11 @@ void test_l1_dhcp4cApi_negative1_dhcp4c_get_emta_remain_lease_time(void)
 */
 void test_l1_dhcp4cApi_positive_1_get_emta_remain_renew_time(void) {
     UT_LOG("Entering test_l1_dhcp4cApi_positive_1_get_emta_remain_renew_time...");
-    unsigned int value;
-    int status = dhcp4c_get_emta_remain_renew_time(&value);
+    unsigned int value = 0;
     UT_LOG("Invoking dhcp4c_get_emta_remain_renew_time with pValue (%p)", &value);
+    int status = dhcp4c_get_emta_remain_renew_time(&value);
     UT_LOG("Return status: %d", status);
     UT_LOG("Received value: %u", value);
-
     UT_ASSERT_EQUAL(status, STATUS_SUCCESS);
     if (value >= 0 && value <= UINT32_MAX){
         UT_LOG("emta_remain_renew_time is %d which is a valid value.", value);
@@ -2106,7 +1901,6 @@ void test_l1_dhcp4cApi_positive_1_get_emta_remain_renew_time(void) {
 	UT_LOG("emta_remain_renew_time is %d which is a invalid value.", value);
         UT_FAIL("dhcp4c_get_emta_remain_renew_time validation failed");	
     }
-
     UT_LOG("Exiting test_l1_dhcp4cApi_positive_1_get_emta_remain_renew_time...");
 }
 
@@ -2124,15 +1918,15 @@ void test_l1_dhcp4cApi_positive_1_get_emta_remain_renew_time(void) {
 * **User Interaction:** If user chose to run the test in interactive mode, then the test case has to be selected via console
 *
 * **Test Procedure:**
-*| Variation / Step | Description                                                         | Test Data                                          | Expected Result                     | Notes             |
-*| :--------------: | :------------------------------------------------------------------ | :------------------------------------------------- | :---------------------------------- | :-----------------|
-*| 01               | Verify the failure scenario of dhcp4c_get_emta_remain_renew_time   | pValue = NULL                                      | STATUS_FAILURE                      | Should be unsuccessful |
+*| Variation / Step | Description   | Test Data | Expected Result | Notes |
+*| :--------------: | --------------|-----------|-----------------|-------|
+*| 01 | Pass NULL buffer to dhcp4c_get_emta_remain_renew_time API  | pValue = NULL | STATUS_FAILURE | Should be unsuccessful |
 */
 void test_l1_dhcp4cApi_negative_1_get_emta_remain_renew_time(void) {
     UT_LOG("Entering test_l1_dhcp4cApi_negative_1_get_emta_remain_renew_time...");
     unsigned int *pValue = NULL;
-    int status = dhcp4c_get_emta_remain_renew_time(pValue);
     UT_LOG("Invoking dhcp4c_get_emta_remain_renew_time with pValue (%p)", pValue);
+    int status = dhcp4c_get_emta_remain_renew_time(pValue);
     UT_LOG("Return status: %d", status);    
     UT_ASSERT_EQUAL(status, STATUS_FAILURE);
     UT_LOG("Exiting test_l1_dhcp4cApi_negative_1_get_emta_remain_renew_time...");
@@ -2157,29 +1951,24 @@ void test_l1_dhcp4cApi_negative_1_get_emta_remain_renew_time(void) {
 * **Test Procedure:**
 * | Variation / Step | Description | Test Data | Expected Result | Notes |
 * | :----: | --------- | ---------- |-------------- | ----- |
-* | 01 | Invoking dhcp4c_get_emta_remain_rebind_time | value = 0 | STATUS_SUCCESS | Should be successful |
+* | 01 | Invoking dhcp4c_get_emta_remain_rebind_time | value = valid buffer | STATUS_SUCCESS | Should be successful |
 */
 void test_l1_dhcp4cApi_positive1_dhcp4c_get_emta_remain_rebind_time(void) {
     UT_LOG("Entering test_l1_dhcp4cApi_positive1_dhcp4c_get_emta_remain_rebind_time...");
-
     unsigned int value;
-    int result = dhcp4c_get_emta_remain_rebind_time(&value);
-    
     UT_LOG("Invoking dhcp4c_get_emta_remain_rebind_time with valid value pointer.");
+    int result = dhcp4c_get_emta_remain_rebind_time(&value);
     UT_LOG("Returned status: %d", result);
     UT_LOG("Expected Result: STATUS_SUCCESS");
     UT_LOG("Output Value: %u", value);
-
     UT_ASSERT_EQUAL(result, STATUS_SUCCESS);
     if(value >= 0 && value <= UINT32_MAX){
         UT_LOG("emta_remain_rebind_time is %u which is a valid value.", value);
         UT_PASS("dhcp4c_get_emta_remain_rebind_time validation success");
-    }
-	else{
-		UT_LOG("emta_remain_rebind_time is %u which is a invalid value.", value);
+    } else{
+	UT_LOG("emta_remain_rebind_time is %u which is a invalid value.", value);
         UT_FAIL("dhcp4c_get_emta_remain_rebind_time validation failed");	
     }
-
     UT_LOG("Exiting test_l1_dhcp4cApi_positive1_dhcp4c_get_emta_remain_rebind_time...");
 }
 
@@ -2204,15 +1993,11 @@ void test_l1_dhcp4cApi_positive1_dhcp4c_get_emta_remain_rebind_time(void) {
 void test_l1_dhcp4cApi_negative1_dhcp4c_get_emta_remain_rebind_time(void) {
     UT_LOG("Entering test_l1_dhcp4cApi_negative1_dhcp4c_get_emta_remain_rebind_time...");
     unsigned int *pValue = NULL;
-    int result = dhcp4c_get_emta_remain_rebind_time(pValue);
-    
     UT_LOG("Invoking dhcp4c_get_emta_remain_rebind_time with NULL value pointer.");
+    int result = dhcp4c_get_emta_remain_rebind_time(pValue);
     UT_LOG("Returned Value: %d", result);
     UT_LOG("Expected Result: STATUS_FAILURE");
-
-
     UT_ASSERT_EQUAL(result, STATUS_FAILURE);
-
     UT_LOG("Exiting test_l1_dhcp4cApi_negative1_dhcp4c_get_emta_remain_rebind_time...");
 }
 
