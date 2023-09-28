@@ -632,7 +632,7 @@ void test_l1_dhcp4cApi_negative_1_dhcp4c_get_ert_ip_addr(void)
 * **Test Procedure:**
 * | Variation / Step | Description | Test Data | Expected Result | Notes |
 * | :----: | --------- | ---------- |-------------- | ----- |
-* | 01 | Invoking dhcp4c_get_ert_mask with valid memory address | pValue = valid | STATUS_SUCCESS | pValue range for every octet is between 0 to 255 |
+* | 01 | Invoking dhcp4c_get_ert_mask with valid memory address | pValue = valid buffer| STATUS_SUCCESS | pValue range for every octet is between 0 to 255 |
 */
 void test_l1_dhcp4cApi_positive1_dhcp4c_get_ert_mask(void)
 {
@@ -785,7 +785,7 @@ void test_l1_dhcp4cApi_negative_1_get_ert_gw(void)
 * **Test Procedure:**
 * | Variation / Step | Description | Test Data | Expected Result | Notes |
 * | :----: | --------- | ---------- |-------------- | ----- |
-* | 01 | Invoking `dhcp4c_get_ert_dns_svrs` with valid address | pValue = Valid address | Success | Should pass and pValue should be within 1-127 or 128-191 or 192-223 |
+* | 01 | Invoking `dhcp4c_get_ert_dns_svrs` with valid address | pValue = Valid address | STATUS_SUCCESS | Should pass and pValue should be within 1-127 or 128-191 or 192-223 |
 */
 
 void test_l1_dhcp4cApi_positive_1_get_ert_dns_svrs(void) {
