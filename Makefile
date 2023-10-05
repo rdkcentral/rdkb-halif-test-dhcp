@@ -1,22 +1,21 @@
-#* ******************************************************************************
-#* Copyright (C) 2022 Sky group of companies, All Rights Reserved
-#* * --------------------------------------------------------------------------
-#* * THIS SOFTWARE CONTRIBUTION IS PROVIDED ON BEHALF OF SKY PLC. 
-#* * BY THE CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING,
-#* * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
-#* * A PARTICULAR PURPOSE ARE DISCLAIMED
-#* ******************************************************************************
-#*
-#*   ** Project      : ut
-#*   ** @addtogroup  : ut
-#*   ** @file        : makefile
-#*   ** @author      : gerald.weatherup@sky.uk
-#*   ** @date        : 20/05/2022
-#*   **
-#*   ** @brief : Makefile for ut
-#*   ** 
-#*
-#* ******************************************************************************
+# *
+# * If not stated otherwise in this file or this component's LICENSE file the
+# * following copyright and licenses apply:
+# *
+# * Copyright 2023 RDK Management
+# *
+# * Licensed under the Apache License, Version 2.0 (the "License");
+# * you may not use this file except in compliance with the License.
+# * You may obtain a copy of the License at
+# *
+# * http://www.apache.org/licenses/LICENSE-2.0
+# *
+# * Unless required by applicable law or agreed to in writing, software
+# * distributed under the License is distributed on an "AS IS" BASIS,
+# * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# * See the License for the specific language governing permissions and
+# * limitations under the License.
+# *
 ROOT_DIR:=$(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 BIN_DIR := $(ROOT_DIR)/bin
 TOP_DIR := $(ROOT_DIR)
@@ -36,13 +35,10 @@ $(info TARGET [$(TARGET)])
 
 HAL_LIB_DIR := $(ROOT_DIR)/libs
 ifeq ($(TARGET),arm)
-CFLAGS = -DFEATURE_RDKB_THERMAL_MANAGER -DFEATURE_RDKB_LED_MANAGER
-YLDFLAGS = -Wl,-rpath,$(HAL_LIB_DIR) -L$(HAL_LIB_DIR) -ldhcp4cApi -v
+YLDFLAGS = -Wl,-rpath,$(HAL_LIB_DIR) -L$(HAL_LIB_DIR) -ldhcp4cApi
 endif
 
 ifeq ($(TARGET),intel)
-CFLAGS = -DFEATURE_RDKB_THERMAL_MANAGER -DFEATURE_RDKB_LED_MANAGER
-#YLDFLAGS = -Wl,-rpath,$(HAL_LIB_DIR) -L$(HAL_LIB_DIR) -ldhcp4cApi -lrdkb-dhcp-hal -v
 YLDFLAGS = -Wl,-rpath,$(HAL_LIB_DIR) -L$(HAL_LIB_DIR) -ldhcp4cApi -lrdkb-dhcp-hal
 endif
 
