@@ -29,7 +29,6 @@
 *
 * Ref to API Definition specification documentation : [halSpec.md](../../../docs/halSpec.md)
 */
-
 #include <ut.h>
 #include <ut_log.h>
 #include "dhcp4cApi.h"
@@ -1992,7 +1991,7 @@ static UT_test_suite_t * pSuite = NULL;
  *
  * @return int - 0 on success, otherwise failure
  */
-int register_hal_tests(void)
+int test_dhcp4cApi_hal_l1_register(void)
 {
     // Create the test suite
     pSuite = UT_add_suite("[L1 dhcp4cApi]", NULL, NULL);
@@ -2000,31 +1999,60 @@ int register_hal_tests(void)
         return -1;
     }
     // List of test function names and strings
-   const char* list1[] = {"l1_dhcp4cApi_positive1_dhcp4c_get_ert_lease_time", "l1_dhcp4cApi_negative1_dhcp4c_get_ert_lease_time", "l1_dhcp4cApi_positive1_dhcp4c_get_ert_remain_lease_time", "l1_dhcp4cApi_negative1_dhcp4c_get_ert_remain_lease_time", "l1_dhcp4cApi_positive1_get_ert_remain_renew_time", "l1_dhcp4cApi_negative1_get_ert_remain_renew_time", "l1_dhcp4cApi_positive1_dhcp4c_get_ert_remain_rebind_time", "l1_dhcp4cApi_negative1_dhcp4c_get_ert_remain_rebind_time", "l1_dhcp4cApi_positive1_dhcp4c_get_ert_config_attempts", "l1_dhcp4cApi_negative1_dhcp4c_get_ert_config_attempts", "l1_dhcp4cApi_positive1_dhcp4c_get_ert_ifname", "l1_dhcp4cApi_negative1_dhcp4c_get_ert_ifname", "l1_dhcp4cApi_positive1_GetErtFsmState", "l1_dhcp4cApi_negative1_GetErtFsmState_NullPointer", "l1_dhcp4cApi_positive1_dhcp4c_get_ert_ip_addr", "l1_dhcp4cApi_negative1_dhcp4c_get_ert_ip_addr", "l1_dhcp4cApi_positive1_dhcp4c_get_ert_mask", "l1_dhcp4cApi_negative1_dhcp4c_get_ert_mask", "l1_dhcp4cApi_positive1_get_ert_gw", "l1_dhcp4cApi_negative1_get_ert_gw", "l1_dhcp4cApi_positive1_get_ert_dns_svrs", "l1_dhcp4cApi_negative1_get_ert_dns_svrs", "l1_dhcp4cApi_positive1_get_ert_dhcp_svr", "l1_dhcp4cApi_negative1_get_ert_dhcp_svr", "l1_dhcp4cApi_positive1_dhcp4c_get_ecm_lease_time", "l1_dhcp4cApi_negative1_dhcp4c_get_ecm_lease_time", "l1_dhcp4cApi_positive1_dhcp4c_get_ecm_remain_lease_time", "l1_dhcp4cApi_negative1_dhcp4c_get_ecm_remain_lease_time", "l1_dhcp4cApi_positive1_dhcp4c_get_ecm_remain_renew_time", "l1_dhcp4cApi_negative1_dhcp4c_get_ecm_remain_renew_time", "l1_dhcp4c_get_ecm_remain_rebind_time_positive1", "l1_dhcp4c_get_ecm_remain_rebind_time_negative1", "l1_dhcp4cApi_positive1_get_ecm_config_attempts", "l1_dhcp4cApi_negative1_get_ecm_config_attempts", "l1_dhcp4cApi_positive1_dhcp4c_get_ecm_ifname", "l1_dhcp4cApi_negative1_dhcp4c_get_ecm_ifname", "l1_dhcp4cApi_positive1_dhcp4c_get_ecm_fsm_state", "l1_dhcp4cApi_negative1_dhcp4c_get_ecm_fsm_state", "l1_dhcp4cApi_positive1_dhcp4c_get_ecm_ip_addr", "l1_dhcp4cApi_negative1_dhcp4c_get_ecm_ip_addr", "l1_dhcp4cApi_positive1_dhcp4c_get_ecm_mask", "l1_dhcp4cApi_negative1_dhcp4c_get_ecm_mask", "l1_dhcp4cApi_positive1_dhcp4c_get_ecm_gw", "l1_dhcp4cApi_negative1_dhcp4c_get_ecm_gw", "l1_dhcp4cApi_positive2_dhcp4c_get_ecm_dns_svrs", "l1_dhcp4cApi_negative1_dhcp4c_get_ecm_dns_svrs", "l1_dhcp4cApi_positive1_dhcp4c_get_ecm_dhcp_svr", "l1_dhcp4cApi_negative1_dhcp4c_get_ecm_dhcp_svr", "l1_dhcp4cApi_positive1_dhcp4c_get_emta_remain_lease_time", "l1_dhcp4cApi_negative1_dhcp4c_get_emta_remain_lease_time", "l1_dhcp4cApi_positive1_get_emta_remain_renew_time", "l1_dhcp4cApi_negative1_get_emta_remain_renew_time", "l1_dhcp4cApi_positive1_dhcp4c_get_emta_remain_rebind_time", "l1_dhcp4cApi_negative1_dhcp4c_get_emta_remain_rebind_time" };
-   void (*list2[])() = {test_l1_dhcp4cApi_hal_positive1_dhcp4c_get_ert_lease_time, test_l1_dhcp4cApi_hal_negative1_dhcp4c_get_ert_lease_time, test_l1_dhcp4cApi_hal_positive1_dhcp4c_get_ert_remain_lease_time, test_l1_dhcp4cApi_hal_negative1_dhcp4c_get_ert_remain_lease_time, test_l1_dhcp4cApi_hal_positive1_get_ert_remain_renew_time, test_l1_dhcp4cApi_hal_negative1_get_ert_remain_renew_time, test_l1_dhcp4cApi_hal_positive1_dhcp4c_get_ert_remain_rebind_time, test_l1_dhcp4cApi_hal_negative1_dhcp4c_get_ert_remain_rebind_time, test_l1_dhcp4cApi_hal_positive1_dhcp4c_get_ert_config_attempts, test_l1_dhcp4cApi_hal_negative1_dhcp4c_get_ert_config_attempts, test_l1_dhcp4cApi_hal_positive1_dhcp4c_get_ert_ifname, test_l1_dhcp4cApi_hal_negative1_dhcp4c_get_ert_ifname, test_l1_dhcp4cApi_hal_positive1_GetErtFsmState, test_l1_dhcp4cApi_hal_negative1_GetErtFsmState_NullPointer, test_l1_dhcp4cApi_hal_positive1_dhcp4c_get_ert_ip_addr, test_l1_dhcp4cApi_hal_negative1_dhcp4c_get_ert_ip_addr, test_l1_dhcp4cApi_hal_positive1_dhcp4c_get_ert_mask, test_l1_dhcp4cApi_hal_negative1_dhcp4c_get_ert_mask, test_l1_dhcp4cApi_hal_positive1_get_ert_gw, test_l1_dhcp4cApi_hal_negative1_get_ert_gw, test_l1_dhcp4cApi_hal_positive1_get_ert_dns_svrs, test_l1_dhcp4cApi_hal_negative1_get_ert_dns_svrs, test_l1_dhcp4cApi_hal_positive1_get_ert_dhcp_svr, test_l1_dhcp4cApi_hal_negative1_get_ert_dhcp_svr, test_l1_dhcp4cApi_hal_positive1_dhcp4c_get_ecm_lease_time, test_l1_dhcp4cApi_hal_negative1_dhcp4c_get_ecm_lease_time, test_l1_dhcp4cApi_hal_positive1_dhcp4c_get_ecm_remain_lease_time, test_l1_dhcp4cApi_hal_negative1_dhcp4c_get_ecm_remain_lease_time, test_l1_dhcp4cApi_hal_positive1_dhcp4c_get_ecm_remain_renew_time, test_l1_dhcp4cApi_hal_negative1_dhcp4c_get_ecm_remain_renew_time, test_l1_dhcp4c_get_ecm_remain_rebind_time_positive1, test_l1_dhcp4c_get_ecm_remain_rebind_time_negative1, test_l1_dhcp4cApi_hal_positive1_get_ecm_config_attempts, test_l1_dhcp4cApi_hal_negative1_get_ecm_config_attempts, test_l1_dhcp4cApi_hal_positive1_dhcp4c_get_ecm_ifname, test_l1_dhcp4cApi_hal_negative1_dhcp4c_get_ecm_ifname, test_l1_dhcp4cApi_hal_positive1_dhcp4c_get_ecm_fsm_state, test_l1_dhcp4cApi_hal_negative1_dhcp4c_get_ecm_fsm_state, test_l1_dhcp4cApi_hal_positive1_dhcp4c_get_ecm_ip_addr, test_l1_dhcp4cApi_hal_negative1_dhcp4c_get_ecm_ip_addr, test_l1_dhcp4cApi_hal_positive1_dhcp4c_get_ecm_mask, test_l1_dhcp4cApi_hal_negative1_dhcp4c_get_ecm_mask, test_l1_dhcp4cApi_hal_positive1_dhcp4c_get_ecm_gw, test_l1_dhcp4cApi_hal_negative1_dhcp4c_get_ecm_gw, test_l1_dhcp4cApi_hal_positive2_dhcp4c_get_ecm_dns_svrs, test_l1_dhcp4cApi_hal_negative1_dhcp4c_get_ecm_dns_svrs, test_l1_dhcp4cApi_hal_positive1_dhcp4c_get_ecm_dhcp_svr, test_l1_dhcp4cApi_hal_negative1_dhcp4c_get_ecm_dhcp_svr, test_l1_dhcp4cApi_hal_positive1_dhcp4c_get_emta_remain_lease_time, test_l1_dhcp4cApi_hal_negative1_dhcp4c_get_emta_remain_lease_time, test_l1_dhcp4cApi_hal_positive1_get_emta_remain_renew_time, test_l1_dhcp4cApi_hal_negative1_get_emta_remain_renew_time, test_l1_dhcp4cApi_hal_positive1_dhcp4c_get_emta_remain_rebind_time, test_l1_dhcp4cApi_hal_negative1_dhcp4c_get_emta_remain_rebind_time };
-    // Add tests to the suite
-    for (int i = 0; i < sizeof(list1) / sizeof(list1[0]); i++) {
-        UT_add_test(pSuite, list1[i], list2[i]);
-    }
-    return 0;
-}
-int main(int argc, char** argv)
-{
-    int registerReturn = 0;
-    /* Register tests as required, then call the UT-main to support switches and triggering */
-    UT_init( argc, argv );
-    /* Check if tests are registered successfully */
-    registerReturn = register_hal_tests();
-    if (registerReturn == 0)
-    {
-        printf("register_hal_tests() returned success");
-    }
-    else
-    {
-        printf("register_hal_tests() returned failure");
-        return 1;
-    }
-    /* Begin test executions */
-    UT_run_tests();
+
+    UT_add_test( pSuite, "l1_dhcp4cApi_hal_positive1_dhcp4c_get_ert_lease_time", test_l1_dhcp4cApi_hal_positive1_dhcp4c_get_ert_lease_time);
+    UT_add_test( pSuite, "l1_dhcp4cApi_hal_negative1_dhcp4c_get_ert_lease_time", test_l1_dhcp4cApi_hal_negative1_dhcp4c_get_ert_lease_time);
+    UT_add_test( pSuite, "l1_dhcp4cApi_hal_positive1_dhcp4c_get_ert_remain_lease_time", test_l1_dhcp4cApi_hal_positive1_dhcp4c_get_ert_remain_lease_time);
+    UT_add_test( pSuite, "l1_dhcp4cApi_hal_negative1_dhcp4c_get_ert_remain_lease_time", test_l1_dhcp4cApi_hal_negative1_dhcp4c_get_ert_remain_lease_time);
+    UT_add_test( pSuite, "l1_dhcp4cApi_hal_positive1_get_ert_remain_renew_time", test_l1_dhcp4cApi_hal_positive1_get_ert_remain_renew_time);
+    UT_add_test( pSuite, "l1_dhcp4cApi_hal_negative1_get_ert_remain_renew_time", test_l1_dhcp4cApi_hal_negative1_get_ert_remain_renew_time);
+    UT_add_test( pSuite, "l1_dhcp4cApi_hal_positive1_dhcp4c_get_ert_remain_rebind_time", test_l1_dhcp4cApi_hal_positive1_dhcp4c_get_ert_remain_rebind_time);
+    UT_add_test( pSuite, "l1_dhcp4cApi_hal_negative1_dhcp4c_get_ert_remain_rebind_time", test_l1_dhcp4cApi_hal_negative1_dhcp4c_get_ert_remain_rebind_time);
+    UT_add_test( pSuite, "l1_dhcp4cApi_hal_positive1_dhcp4c_get_ert_config_attempts", test_l1_dhcp4cApi_hal_positive1_dhcp4c_get_ert_config_attempts);
+    UT_add_test( pSuite, "l1_dhcp4cApi_hal_negative1_dhcp4c_get_ert_config_attempts", test_l1_dhcp4cApi_hal_negative1_dhcp4c_get_ert_config_attempts);
+    UT_add_test( pSuite, "l1_dhcp4cApi_hal_positive1_dhcp4c_get_ert_ifname", test_l1_dhcp4cApi_hal_positive1_dhcp4c_get_ert_ifname);
+    UT_add_test( pSuite, "l1_dhcp4cApi_hal_negative1_dhcp4c_get_ert_ifname", test_l1_dhcp4cApi_hal_negative1_dhcp4c_get_ert_ifname);
+    UT_add_test( pSuite, "l1_dhcp4cApi_hal_positive1_GetErtFsmState", test_l1_dhcp4cApi_hal_positive1_GetErtFsmState);
+    UT_add_test( pSuite, "l1_dhcp4cApi_hal_negative1_GetErtFsmState_NullPointer", test_l1_dhcp4cApi_hal_negative1_GetErtFsmState_NullPointer);
+    UT_add_test( pSuite, "l1_dhcp4cApi_hal_positive1_dhcp4c_get_ert_ip_addr", test_l1_dhcp4cApi_hal_positive1_dhcp4c_get_ert_ip_addr);
+    UT_add_test( pSuite, "l1_dhcp4cApi_hal_negative1_dhcp4c_get_ert_ip_addr", test_l1_dhcp4cApi_hal_negative1_dhcp4c_get_ert_ip_addr);
+    UT_add_test( pSuite, "l1_dhcp4cApi_hal_positive1_dhcp4c_get_ert_mask", test_l1_dhcp4cApi_hal_positive1_dhcp4c_get_ert_mask);
+    UT_add_test( pSuite, "l1_dhcp4cApi_hal_negative1_dhcp4c_get_ert_mask", test_l1_dhcp4cApi_hal_negative1_dhcp4c_get_ert_mask);
+    UT_add_test( pSuite, "l1_dhcp4cApi_hal_positive1_get_ert_gw", test_l1_dhcp4cApi_hal_positive1_get_ert_gw);
+    UT_add_test( pSuite, "l1_dhcp4cApi_hal_negative1_get_ert_gw", test_l1_dhcp4cApi_hal_negative1_get_ert_gw);
+    UT_add_test( pSuite, "l1_dhcp4cApi_hal_positive1_get_ert_dns_svrs", test_l1_dhcp4cApi_hal_positive1_get_ert_dns_svrs);
+    UT_add_test( pSuite, "l1_dhcp4cApi_hal_negative1_get_ert_dns_svrs", test_l1_dhcp4cApi_hal_negative1_get_ert_dns_svrs);
+    UT_add_test( pSuite, "l1_dhcp4cApi_hal_positive1_get_ert_dhcp_svr", test_l1_dhcp4cApi_hal_positive1_get_ert_dhcp_svr);
+    UT_add_test( pSuite, "l1_dhcp4cApi_hal_negative1_get_ert_dhcp_svr", test_l1_dhcp4cApi_hal_negative1_get_ert_dhcp_svr);
+    UT_add_test( pSuite, "l1_dhcp4cApi_hal_positive1_dhcp4c_get_ecm_lease_time", test_l1_dhcp4cApi_hal_positive1_dhcp4c_get_ecm_lease_time);
+    UT_add_test( pSuite, "l1_dhcp4cApi_hal_negative1_dhcp4c_get_ecm_lease_time", test_l1_dhcp4cApi_hal_negative1_dhcp4c_get_ecm_lease_time);
+    UT_add_test( pSuite, "l1_dhcp4cApi_hal_positive1_dhcp4c_get_ecm_remain_lease_time", test_l1_dhcp4cApi_hal_positive1_dhcp4c_get_ecm_remain_lease_time);
+    UT_add_test( pSuite, "l1_dhcp4cApi_hal_negative1_dhcp4c_get_ecm_remain_lease_time", test_l1_dhcp4cApi_hal_negative1_dhcp4c_get_ecm_remain_lease_time);
+    UT_add_test( pSuite, "l1_dhcp4cApi_hal_positive1_dhcp4c_get_ecm_remain_renew_time", test_l1_dhcp4cApi_hal_positive1_dhcp4c_get_ecm_remain_renew_time);
+    UT_add_test( pSuite, "l1_dhcp4cApi_hal_negative1_dhcp4c_get_ecm_remain_renew_time", test_l1_dhcp4cApi_hal_negative1_dhcp4c_get_ecm_remain_renew_time);
+    UT_add_test( pSuite, "l1_dhcp4c_get_ecm_remain_rebind_time_positive1", test_l1_dhcp4c_get_ecm_remain_rebind_time_positive1);
+    UT_add_test( pSuite, "l1_dhcp4c_get_ecm_remain_rebind_time_negative1", test_l1_dhcp4c_get_ecm_remain_rebind_time_negative1);
+    UT_add_test( pSuite, "l1_dhcp4cApi_hal_positive1_get_ecm_config_attempts", test_l1_dhcp4cApi_hal_positive1_get_ecm_config_attempts);
+    UT_add_test( pSuite, "l1_dhcp4cApi_hal_negative1_get_ecm_config_attempts", test_l1_dhcp4cApi_hal_negative1_get_ecm_config_attempts);
+    UT_add_test( pSuite, "l1_dhcp4cApi_hal_positive1_dhcp4c_get_ecm_ifname", test_l1_dhcp4cApi_hal_positive1_dhcp4c_get_ecm_ifname);
+    UT_add_test( pSuite, "l1_dhcp4cApi_hal_negative1_dhcp4c_get_ecm_ifname", test_l1_dhcp4cApi_hal_negative1_dhcp4c_get_ecm_ifname);
+    UT_add_test( pSuite, "l1_dhcp4cApi_hal_positive1_dhcp4c_get_ecm_fsm_state", test_l1_dhcp4cApi_hal_positive1_dhcp4c_get_ecm_fsm_state);
+    UT_add_test( pSuite, "l1_dhcp4cApi_hal_negative1_dhcp4c_get_ecm_fsm_state", test_l1_dhcp4cApi_hal_negative1_dhcp4c_get_ecm_fsm_state);
+    UT_add_test( pSuite, "l1_dhcp4cApi_hal_positive1_dhcp4c_get_ecm_ip_addr", test_l1_dhcp4cApi_hal_positive1_dhcp4c_get_ecm_ip_addr);
+    UT_add_test( pSuite, "l1_dhcp4cApi_hal_negative1_dhcp4c_get_ecm_ip_addr", test_l1_dhcp4cApi_hal_negative1_dhcp4c_get_ecm_ip_addr);
+    UT_add_test( pSuite, "l1_dhcp4cApi_hal_positive1_dhcp4c_get_ecm_mask", test_l1_dhcp4cApi_hal_positive1_dhcp4c_get_ecm_mask);
+    UT_add_test( pSuite, "l1_dhcp4cApi_hal_negative1_dhcp4c_get_ecm_mask", test_l1_dhcp4cApi_hal_negative1_dhcp4c_get_ecm_mask);
+    UT_add_test( pSuite, "l1_dhcp4cApi_hal_positive1_dhcp4c_get_ecm_gw", test_l1_dhcp4cApi_hal_positive1_dhcp4c_get_ecm_gw);
+    UT_add_test( pSuite, "l1_dhcp4cApi_hal_negative1_dhcp4c_get_ecm_gw", test_l1_dhcp4cApi_hal_negative1_dhcp4c_get_ecm_gw);
+    UT_add_test( pSuite, "l1_dhcp4cApi_hal_positive2_dhcp4c_get_ecm_dns_svrs", test_l1_dhcp4cApi_hal_positive2_dhcp4c_get_ecm_dns_svrs);
+    UT_add_test( pSuite, "l1_dhcp4cApi_hal_negative1_dhcp4c_get_ecm_dns_svrs", test_l1_dhcp4cApi_hal_negative1_dhcp4c_get_ecm_dns_svrs);
+    UT_add_test( pSuite, "l1_dhcp4cApi_hal_positive1_dhcp4c_get_ecm_dhcp_svr", test_l1_dhcp4cApi_hal_positive1_dhcp4c_get_ecm_dhcp_svr);
+    UT_add_test( pSuite, "l1_dhcp4cApi_hal_negative1_dhcp4c_get_ecm_dhcp_svr", test_l1_dhcp4cApi_hal_negative1_dhcp4c_get_ecm_dhcp_svr);
+    UT_add_test( pSuite, "l1_dhcp4cApi_hal_positive1_dhcp4c_get_emta_remain_lease_time", test_l1_dhcp4cApi_hal_positive1_dhcp4c_get_emta_remain_lease_time);
+    UT_add_test( pSuite, "l1_dhcp4cApi_hal_negative1_dhcp4c_get_emta_remain_lease_time", test_l1_dhcp4cApi_hal_negative1_dhcp4c_get_emta_remain_lease_time);
+    UT_add_test( pSuite, "l1_dhcp4cApi_hal_positive1_get_emta_remain_renew_time", test_l1_dhcp4cApi_hal_positive1_get_emta_remain_renew_time);
+    UT_add_test( pSuite, "l1_dhcp4cApi_hal_negative1_get_emta_remain_renew_time", test_l1_dhcp4cApi_hal_negative1_get_emta_remain_renew_time);
+    UT_add_test( pSuite, "l1_dhcp4cApi_hal_positive1_dhcp4c_get_emta_remain_rebind_time", test_l1_dhcp4cApi_hal_positive1_dhcp4c_get_emta_remain_rebind_time);
+    UT_add_test( pSuite, "l1_dhcp4cApi_hal_negative1_dhcp4c_get_emta_remain_rebind_time", test_l1_dhcp4cApi_hal_negative1_dhcp4c_get_emta_remain_rebind_time);
     return 0;
 }
