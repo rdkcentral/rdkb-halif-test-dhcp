@@ -17,7 +17,7 @@
 */
  
 /**
-* @file test_dhcp4cApi.c
+* @file test_l1_dhcp4cApi.c
 * @page dhcp4cApi Level 1 Tests
 *
 * ## Module's Role
