@@ -30,6 +30,8 @@ $(info TARGET NOT SET )
 $(info TARGET FORCED TO Linux)
 TARGET=linux
 CFLAGS = -DBUILD_LINUX
+CFLAGS += -DDHCP4CAPI
+CFLAGS += -DDHCPV4C_API
 SRC_DIRS += $(ROOT_DIR)/skeletons/src
 endif
  
