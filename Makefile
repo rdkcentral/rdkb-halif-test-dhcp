@@ -55,7 +55,9 @@ endif
  
 $(info HAL [$(HAL)])
 endif
-  
+
+UT_LOG_LEVEL ?= 4
+
 .PHONY: clean list all
  
 # Here is a list of exports from this makefile to the next
@@ -71,10 +73,10 @@ export CFLAGS
 export TARGET_EXEC
  
 .PHONY: clean list build
- 
+
 build:
 	@echo UT [$@]
-	make -C ./ut-core
+	make -C ./ut-core UT_LOG_LEVEL=$(UT_LOG_LEVEL)
  
 list:
 	@echo UT [$@]
