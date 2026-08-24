@@ -47,7 +47,7 @@ YLDFLAGS = -Wl,-rpath,$(HAL_LIB_DIR) -L$(HAL_LIB_DIR) -ldhcp4cApi -llogger
 CFLAGS = -DDHCP4CAPI
 else ifeq ($(HAL),dhcpv4c_api)
 SRC_DIRS = $(ROOT_DIR)/src/main.c $(ROOT_DIR)/src/test_register.c $(ROOT_DIR)/src/test_l1_dhcpv4c_api.c
-YLDFLAGS = -Wl,-rpath,$(HAL_LIB_DIR) -L$(HAL_LIB_DIR) -lapi_dhcpv4c -lsysevent
+YLDFLAGS = -Wl,-rpath,$(HAL_LIB_DIR) -L$(HAL_LIB_DIR) -lapi_dhcpv4c -lzstd -lsysevent
 CFLAGS = -DDHCPV4C_API
 else
 $(error Unsupported HAL option for ARM target: $(HAL))
